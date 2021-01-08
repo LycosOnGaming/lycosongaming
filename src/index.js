@@ -10,6 +10,7 @@ import StreamingPlan from './components/StreamingPlan/StreamingPlan';
 import SocialMedia from './components/SocialMedia/SocialMedia';
 import Reviews from './components/Reviews/Reviews';
 import Datenschutz from './components/Datenschutz/Datenschutz';
+import Impressum from './components/Impressum/Impressum';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import IFrameComponent from './components/IFrameComponent/IFrameComponent';
 import Footer from './components/Footer/Footer';
@@ -52,6 +53,7 @@ ReactDOM.render(
                                 path="/datenschutz"
                                 component={Datenschutz}
                             />
+                            <Route path="/impressum" component={Impressum} />
                             <Route path="/disclaimer" component={Disclaimer} />
                         </div>
                         <div className="col-lg-2 d-lg-block d-md-none d-sm-none d-none">
