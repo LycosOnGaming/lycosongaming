@@ -1,0 +1,68 @@
+@import 'variables';
+@import 'font';
+
+body {
+    margin: 0;
+    padding: 0;
+    color: $white;
+    background-color: $black;
+    overflow-x: hidden;
+
+    .main-page {
+        display: inline-flex;
+        text-align: center;
+        margin-top: 1%;
+        div {
+            padding: 0;
+        }
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .content {
+        text-align: left;
+        padding: 0 0 0 10px !important;
+    }
+
+    .playlists,
+    .no-padding {
+        padding: 0;
+    }
+
+    .left-side {
+        float: left;
+        text-align: center;
+    }
+
+    .right-side {
+        float: right;
+        text-align: center;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    iframe {
+        margin-bottom: 5%;
+    }
+
+    h1 {
+        font-family: $base-font;
+        text-align: center;
+        word-wrap: break-word;
+    }
+
+    a {
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+
+    @media (max-width: 992px) {
+        .content {
+            padding: 0 40px;
+        }
+    }
+}

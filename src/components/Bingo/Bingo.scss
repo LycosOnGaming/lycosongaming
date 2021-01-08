@@ -1,0 +1,111 @@
+.Bingo {
+    margin-bottom: 2rem;
+
+    .row {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .bingoText-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .items {
+            flex: 0 0 18%;
+            cursor: pointer;
+            padding: .5rem;
+            word-break: break-word;
+            border-radius: 4rem;
+            color: #f0f0f0;
+            background-color: transparent;
+            border: 1px solid #f0f0f0;
+            margin-right: .25rem;
+            margin-left: .25rem;
+            margin-bottom: .5rem;
+
+            &:focus {
+                outline: 0;
+            }
+
+            &:hover {
+                background-color: #666;
+                font-weight: bold;
+            }
+
+            @media (max-width: 540px) {
+                flex: 0 0 16%;
+            }
+        }
+
+        .disabled {
+            background-color: #242424;
+            color: #666;
+            font-weight: bold;
+            cursor: no-drop;
+
+            &:hover {
+                background-color: #242424;
+            }
+        }
+    }    
+}
+
+.bingo-image,
+.win-animation-text {
+    display: none;       
+}
+
+.animation-button {
+    margin-top: 1rem;
+}    
+
+.win-animation {
+    .bingoText-item {
+        display: none;
+    }
+    
+    .win-animation-text {    
+        display: flex;
+        justify-content: center;
+        margin: -7rem auto;
+        animation: pulse 4s infinite;
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            70% {
+                transform: scale(2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+
+    .bingo-image {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+
+        img {
+            width: 50%;
+            position: relative;
+            animation-name: example;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+          
+        @keyframes example {
+            0%   {left:0px; top:0px;}
+            25%  {left:400px; top:0px;}
+            50%  {left:400px; top:200px;}
+            75%  {left:-400px; top:200px;}
+            89%  {left:-400px; top:0px;}
+            100% {left:0px; top:0px;}
+        }
+    }
+}

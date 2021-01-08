@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.172791cc.chunk.css",
+    "main.js": "/static/js/main.ff388586.chunk.js",
+    "main.js.map": "/static/js/main.ff388586.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.76fe71d4.js",
+    "runtime-main.js.map": "/static/js/runtime-main.76fe71d4.js.map",
+    "static/css/2.903a27b1.chunk.css": "/static/css/2.903a27b1.chunk.css",
+    "static/js/2.0695e883.chunk.js": "/static/js/2.0695e883.chunk.js",
+    "static/js/2.0695e883.chunk.js.map": "/static/js/2.0695e883.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b6de1b0d4ff4e1a1184e9d1360944570.js": "/precache-manifest.b6de1b0d4ff4e1a1184e9d1360944570.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.903a27b1.chunk.css.map": "/static/css/2.903a27b1.chunk.css.map",
+    "static/css/main.172791cc.chunk.css.map": "/static/css/main.172791cc.chunk.css.map",
+    "static/js/2.0695e883.chunk.js.LICENSE.txt": "/static/js/2.0695e883.chunk.js.LICENSE.txt",
+    "static/media/GOODY_BANNER.png": "/static/media/GOODY_BANNER.b231e896.png",
+    "static/media/main.scss": "/static/media/Old London.c8c687cb.ttf",
+    "static/media/Untitled 4.jpg": "/static/media/Untitled 4.68e9efdf.jpg",
+    "static/media/YTLogoGoody.png": "/static/media/YTLogoGoody.aad26dec.png",
+    "static/media/cacielogo.png": "/static/media/cacielogo.0d14b3c6.png",
+    "static/media/dekaylogo.png": "/static/media/dekaylogo.23caff1e.png",
+    "static/media/lautschmerlogo.png": "/static/media/lautschmerlogo.3a3504d9.png",
+    "static/media/logosmallytbranding.png": "/static/media/logosmallytbranding.ad5ae337.png",
+    "static/media/lycosDC.png": "/static/media/lycosDC.ee762c74.png",
+    "static/media/lycosFB.png": "/static/media/lycosFB.5644b057.png",
+    "static/media/lycosHead.png": "/static/media/lycosHead.39d3c05e.png",
+    "static/media/lycosTwitch.png": "/static/media/lycosTwitch.cba7137c.png",
+    "static/media/lycosTwitter.png": "/static/media/lycosTwitter.360a7cd7.png",
+    "static/media/lycosYT.png": "/static/media/lycosYT.3aaffd6a.png",
+    "static/media/parttimelogo.png": "/static/media/parttimelogo.a9979df0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.76fe71d4.js",
+    "static/css/2.903a27b1.chunk.css",
+    "static/js/2.0695e883.chunk.js",
+    "static/css/main.172791cc.chunk.css",
+    "static/js/main.ff388586.chunk.js"
+  ]
+}

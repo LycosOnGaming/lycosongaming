@@ -1,0 +1,35 @@
+{
+  "remotePath": "/www",
+  "host": "webhosting37.1blu.de",
+  "username": "ftp292110-2738726",
+  "password": "#BR24c22b04m3577",
+  "port": 21,
+  "secure": false,
+  "protocol": "ftp",
+  "uploadOnSave": false,
+  "passive": false,
+  "debug": false,
+  "privateKeyPath": null,
+  "passphrase": null,
+  "agent": null,
+  "allow": [],
+  "ignore": [
+    "/.vscode",
+    "/build/*",
+    "/node_modules/*",
+    "/public/*",
+    "/src/*",
+    ".editorconfig",
+    ".prettierrc",
+    "config-overrides.js",
+    "package-lock.json",
+    "package.json",
+    "README.md",
+    "yarn-error.log",
+    "yarn.lock"
+  ],
+  "generatedFiles": {
+    "extensionsToInclude": [""],
+    "path": ""
+  }
+}

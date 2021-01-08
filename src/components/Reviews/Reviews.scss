@@ -1,0 +1,35 @@
+.Reviews {
+    .row {
+        > div {
+            display: inline-flex;
+            flex-flow: row wrap;
+        }
+    }
+    iframe {
+        margin-bottom: 0;
+    }
+
+    div {
+        margin-bottom: 2%;
+    }
+
+    p {
+        display: block;
+    }
+
+    .gameReview {
+        border-bottom: 1px solid white;
+        border-left: 40px solid black;
+        border-right: 40px solid black;
+        padding: 0 5px;
+    }
+
+    .reviews-img {
+        text-align: center;
+
+        iframe {
+            width: 60%;
+            height: 400px;
+        }
+    }
+}

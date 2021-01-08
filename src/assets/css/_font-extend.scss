@@ -1,0 +1,144 @@
+@import 'variables';
+
+%headline-1-responsive {
+  font-family: $headline-font-bold;
+  font-size: $h1-font-size;
+
+  @media screen and (min-width: $viewport-extra-small) {
+    font-size: $h1-bp1-font-size;
+    line-height: $h1-bp1-line-height;
+  }
+
+  @media screen and (min-width: $viewport-small) {
+    font-size: $h1-bp2-font-size;
+    line-height: $h1-bp2-line-height;
+  }
+
+  @media screen and (min-width: $viewport-medium) {
+    font-size: $h1-bp3-font-size;
+    line-height: $h1-bp3-line-height;
+  }
+}
+
+%headline-1 {
+  font-family: $headline-font-bold;
+  font-size: $h1-font-size;
+  font-weight: normal;
+}
+
+%headline-2-responsive {
+  font-family: $headline-font-bold;
+  font-size: $h2-font-size;
+  font-weight: normal;
+
+  @media screen and (min-width: $viewport-extra-small) {
+    font-size: $h2-bp1-font-size;
+    line-height: $h2-bp1-line-height;
+  }
+
+  @media screen and (min-width: $viewport-small) {
+    font-size: $h2-bp2-font-size;
+    line-height: $h2-bp2-line-height;
+  }
+
+  @media screen and (min-width: $viewport-medium) {
+    font-size: $h2-bp3-font-size;
+    line-height: $h2-bp3-line-height;
+  }
+}
+
+%headline-2 {
+  font-family: $headline-font-bold;
+  font-size: $h2-font-size;
+  font-weight: normal;
+}
+
+%headline-3-responsive {
+  font-family: $headline-font-bold;
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+  font-weight: normal;
+
+  @media screen and (min-width: $viewport-medium) {
+    font-size: $h3-bp3-font-size;
+    line-height: $h3-bp3-line-height;
+  }
+}
+
+%headline-3 {
+  font-family: $headline-font-bold;
+  font-size: $h3-font-size;
+  font-weight: normal;
+}
+
+%headline-4-responsive {
+  font-family: $headline-font-bold;
+  font-size: $h4-font-size;
+  line-height: $h4-line-height;
+  font-weight: normal;
+
+  @media screen and (min-width: $viewport-medium) {
+    font-size: $h4-bp3-font-size;
+    line-height: $h4-bp3-line-height;
+  }
+}
+
+%headline-4 {
+  font-family: $headline-font-bold;
+  font-size: $h4-font-size;
+  font-weight: normal;
+}
+
+%headline-5-responsive {
+  font-family: $headline-font-bold;
+  font-size: $h5-font-size;
+  font-weight: normal;
+
+  @media screen and (min-width: $viewport-medium) {
+    font-size: $h5-bp3-font-size;
+    line-height: $h5-bp3-line-height;
+  }
+}
+
+%headline-5 {
+  font-family: $headline-font-bold;
+  font-size: $h5-font-size;
+  font-weight: normal;
+}
+
+%copytext-1-responsive {
+  font-size: $bodycopy-primary-font-size;
+  line-height: $bodycopy-primary-line-height;
+
+  @media screen and (min-width: $viewport-medium) {
+    font-size: $bodycopy-primary-bp3-font-size;
+    line-height: $bodycopy-primary-bp3-line-height;
+  }
+}
+
+%copytext-1 {
+  font-size: $bodycopy-primary-font-size;
+  line-height: $bodycopy-primary-line-height;
+}
+
+%copytext-2 {
+  font-size: $bodycopy-secondary-font-size;
+  line-height: $bodycopy-secondary-line-height;
+}
+
+%copytext-3 {
+  font-size: $bodycopy-tertiary-font-size;
+  line-height: $bodycopy-tertiary-line-height;
+}
+
+%disclaimer {
+  font-size: $disclaimer-font-size;
+  line-height: $disclaimer-line-height;
+}
+
+%possible-items {
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  font-family: $base-font;
+  color: $possible-items-color;
+}

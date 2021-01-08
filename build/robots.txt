@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://www.lycosongaming.de/sitemap.xml

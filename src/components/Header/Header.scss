@@ -1,0 +1,23 @@
+.Header {
+  margin-top: 56px;
+
+  .Header-header {
+    width: 100%;
+  }
+
+  .Header-banner {
+    width: 100%;
+    max-height: 200px;
+  }
+
+  .Header-development-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin: 0 10%;
+  }
+
+  .Header-logo {
+    width: 25%;
+  }
+}

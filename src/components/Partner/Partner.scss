@@ -1,0 +1,32 @@
+@import './src/assets/css/_variables.scss';
+
+.Partner {
+    img {
+        width: 100%;
+        border: 1px solid lightgrey;
+    }
+
+    div {
+        margin-bottom: 2%;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-flex;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #242424;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+        transition: width 2s;
+    }
+    .desc {
+        padding: 15px;
+        text-align: center;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+        width: 100%;
+    }
+}

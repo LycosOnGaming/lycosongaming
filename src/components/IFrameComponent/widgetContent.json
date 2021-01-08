@@ -1,0 +1,105 @@
+{
+  "gameWidgetBanner": [
+    {
+      "title": "gameWidget",
+      "src": "https://www.gamesonly.at/banner_inlay.asp?bg_color=ffffff&link_color=000000&text_color=008cff&frame_color=000000&billing=127964&width=177&height=285&position=hoch",
+      "marginWidth": "0",
+      "marginHeight": "0",
+      "frameBorder": "0",
+      "scrolling": "no",
+      "width": "177",
+      "height": "285"
+    },
+    {
+      "title": "gameWidget",
+      "src": "https://www.gamesonly.at/banner_inlay.asp?bg_color=ffffff&link_color=000000&text_color=008cff&frame_color=000000&billing=127964&width=177&height=285&position=hoch",
+      "marginWidth": "0",
+      "marginHeight": "0",
+      "frameBorder": "0",
+      "scrolling": "no",
+      "width": "177",
+      "height": "285"
+    },
+    {
+      "title": "gameWidget",
+      "src": "https://www.gamesonly.at/banner_inlay.asp?bg_color=ffffff&link_color=000000&text_color=008cff&frame_color=000000&billing=127964&width=177&height=285&position=hoch",
+      "marginWidth": "0",
+      "marginHeight": "0",
+      "frameBorder": "0",
+      "scrolling": "no",
+      "width": "177",
+      "height": "285"
+    },
+    {
+      "title": "gameWidget",
+      "src": "https://www.gamesonly.at/banner_inlay.asp?bg_color=ffffff&link_color=000000&text_color=008cff&frame_color=000000&billing=127964&width=177&height=285&position=hoch",
+      "marginWidth": "0",
+      "marginHeight": "0",
+      "frameBorder": "0",
+      "scrolling": "no",
+      "width": "177",
+      "height": "285"
+    }
+  ],
+  "gameChartsBanner": [
+    {
+      "title": "gameCharts",
+      "src": "https://www.gamesonly.at/gamesonly_inlay.asp?billing=127964&bgcolor_param=000000&link_color_param=ffffff&link_visited_color_param=ffffff&link_hover_color_param=ffffff&wieviele_anzeigen=5",
+      "marginWidth": "0",
+      "marginHeight": "0",
+      "frameBorder": "0",
+      "scrolling": "no",
+      "width": "180",
+      "height": "1350"
+    }
+  ],
+  "liveStreamWidget": [
+    {
+      "title": "Live-Stream",
+      "max-height": "100%",
+      "width": "100%",
+      "height": "315",
+      "src": "https://www.youtube.com/embed/videoseries?list=PLQLEAxRUE42INOxRxfqQbJhicmjtzO8ud",
+      "frameBorder": "0",
+      "allow": "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+      "allowFullScreen": "allowFullScreen"
+    }
+  ],
+  "letsPlayWidget": [
+    {
+      "title": "Lets-Play",
+      "max-height": "100%",
+      "width": "100%",
+      "height": "315",
+      "src": "https://www.youtube.com/embed/videoseries?list=PLQLEAxRUE42LgnMFnZJKOg91W9hDpNHUq",
+      "frameBorder": "0",
+      "allow": "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+      "allowFullScreen": "allowFullScreen"
+    }
+  ],
+  "singleBannerWidget": [
+    {
+      "title": "Banner",
+      "src": "https://www.gamesonly.at/banner_inlay.asp?bg_color=ffffff&link_color=000000&text_color=008cff&frame_color=000000&billing=127964&width=500&height=113",
+      "marginWidth": "0",
+      "marginHeight": "0",
+      "frameBorder": "0",
+      "scrolling": "no",
+      "width": "500",
+      "height": "113"
+    }
+  ],
+  "liveStreamTwitchWidget": [
+    {
+      "title": "liveStreamTwitchWidget",
+      "src": "https://embed.restream.io/player/index.html?token=05b3a8207d17a81b67201b3d6483039c",
+      "marginWidth": "0",
+      "marginHeight": "0",
+      "frameBorder": "0",
+      "scrolling": "no",
+      "width": "960",
+      "height": "576",
+      "allowFullScreen": "allowFullScreen"
+    }
+  ]
+}

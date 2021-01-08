@@ -1,0 +1,38 @@
+.Landingpage {
+    div {
+        margin-bottom: 1%;
+    }
+
+    .lycosHead {
+        max-width: 30px;
+        margin: 0;
+        position: absolute;
+    }
+
+    .banner {
+        padding: 5px;
+    }
+
+    img {
+        width: 100%;
+        max-width: 400px;
+        margin: 10px 0;
+    }
+
+    .center {
+        iframe {
+            max-width: 100%;
+        }
+    }
+
+    .playlists {
+        iframe {
+            width: 90%;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+}

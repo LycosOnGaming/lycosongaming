@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "clinyong.vscode-css-modules",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "mikestead.dotenv",
+    "syler.sass-indented",
+    "wix.vscode-import-cost",
+    "xabikos.ReactSnippets"
+  ]
+}

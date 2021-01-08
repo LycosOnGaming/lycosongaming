@@ -1,0 +1,105 @@
+$white: #f0f0f0;
+$black: #000;
+
+// FONTS
+$base-font: 'Old London Alternate', 'Old London Alternate', sans-serif;
+$base-font-alternate: 'Old London Alternate', 'Old London Alternate', sans-serif;
+
+// Headlines
+
+// H1
+$h1-font-size: 3rem;
+$h1-line-height: 3.3rem;
+$h1-bp1-font-size: 3.6rem;
+$h1-bp1-line-height: 3.9rem;
+$h1-bp2-font-size: 4.5rem;
+$h1-bp2-line-height: 4.8rem;
+$h1-bp3-font-size: 6rem;
+$h1-bp3-line-height: 6.5rem;
+$h1-bp4-font-size: 8rem;
+$h1-bp4-line-height: 9.6rem;
+
+// H2
+$h2-font-size: 2.3rem;
+$h2-line-height: 2.7rem;
+$h2-bp1-font-size: 2.6rem;
+$h2-bp1-line-height: 3rem;
+$h2-stage-bp2-font-size: 2.8rem;
+$h2-stage-bp2-line-height: 3.3rem;
+$h2-bp2-font-size: 3.5rem;
+$h2-bp2-line-height: 4rem;
+$h2-bp3-font-size: 4.5rem;
+$h2-bp3-line-height: 5rem;
+
+// H3
+$h3-font-size: 2.1rem;
+$h3-line-height: 2.5rem;
+$h3-bp3-font-size: 2.8rem;
+$h3-bp3-line-height: 3.3rem;
+
+// H4
+$h4-font-size: 1.8rem;
+$h4-line-height: 2.2rem;
+$h4-bp3-font-size: 2.4rem;
+$h4-bp3-line-height: 2.9rem;
+
+// H5
+$h5-font-size: 1.6rem;
+$h5-line-height: 2rem;
+$h5-bp3-font-size: 1.8rem;
+$h5-bp3-line-height: 2.3rem;
+
+// bodycopy primary
+$bodycopy-primary-font-size: 1.5rem;
+$bodycopy-primary-line-height: 2.3rem;
+$bodycopy-primary-bp3-font-size: 1.6rem;
+$bodycopy-primary-bp3-line-height: 2.5rem;
+
+// bodycopy secondary
+$bodycopy-secondary-font-size: 1.4rem;
+$bodycopy-secondary-line-height: 2.2rem;
+
+// bodycopy tertiary
+$bodycopy-tertiary-font-size: 1.4rem;
+$bodycopy-tertiary-line-height: 2.2rem;
+
+// disclaimer
+$disclaimer-font-size: 1.1rem;
+$disclaimer-line-height: 1.6rem;
+$disclaimer-font-size-xs: 0.8rem;
+$disclaimer-line-height-xs: 1.2rem;
+$disclaimer-line-height-md: 1.8rem;
+
+// SPACING
+
+// head module
+$head-module-vertical-spacing-mobile: 4rem;
+$head-module-vertical-spacing-desktop: 6rem;
+
+// head module
+$page-module-vertical-spacing-mobile: 4rem;
+$page-module-vertical-spacing-desktop: 8rem;
+
+// modular sections
+$modular-section-vertical-spacing: 2rem;
+$preset-teaser-vertical-spacing: 3rem;
+
+// VIEWPORTS
+$viewport-default: 0;
+$viewport-extra-extra-small: 32em / 1.6;
+$viewport-extra-extra-small-max: 31.9em / 1.6;
+$viewport-extra-small: 48em / 1.6;
+$viewport-extra-small-max: 47.9em / 1.6;
+$viewport-extra-small-custom: 51.1em / 1.6;
+$viewport-extra-small-custom-max: 51.2em / 1.6;
+$viewport-small: 76.8em / 1.6;
+$viewport-small-max: 76.7em / 1.6;
+$viewport-small-plus: 96em / 1.6;
+$viewport-small-plus-max: 95.9em / 1.6;
+$viewport-medium: 102.4em / 1.6;
+$viewport-medium-max: 102.3em / 1.6;
+$viewport-calculator-large: 121em / 1.6;
+$viewport-large: 128.1em / 1.6;
+$viewport-large-max: 128em / 1.6;
+$viewport-extra-large: 148.6em / 1.6;
+$viewport-extra-large-max: 148.5em / 1.6;
