@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Goody from '../../assets/images/GOODY_BANNER.png';
-/*
 import DeKay from '../../assets/images/DEKAY_BANNER.png';
 import Lautschmer from '../../assets/images/LAUTSCHMER_BANNER.png';
 import Cacie from '../../assets/images/CACIE_BANNER.jpg';
 import Parttime from '../../assets/images/PARTTIME_BANNER.jpg';
 import Rollie from '../../assets/images/ROLLIE_BANNER.jpg';
-*/
 
 import './Partner.scss';
 
@@ -18,12 +16,6 @@ class Partner extends Component {
                 <h1>Stream-Partner</h1>
                 <div className="col-lg-12">
                     <h4>Der Mentor</h4>
-                    <div className="dropdown">
-                        <img src="winlogo.png" alt="Windows Logo" width="100" height="50" />
-                        <div className="dropdown-content">
-                            <div className="desc">Microsoft's OS Logo since Windows 8</div>
-                        </div>
-                    </div>
                     <div>
                         <Link
                             to="//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q"
@@ -37,15 +29,7 @@ class Partner extends Component {
                         </Link>
                     </div>
                 </div>
-            </div>
-        );
-    }
-}
-
-export default Partner;
-
-/*
- <div className="col-lg-12">
+                <div className="col-lg-12">
                     <h4>Der Hunter</h4>
                     <div>
                         <Link
@@ -120,4 +104,9 @@ export default Partner;
                         </Link>
                     </div>
                 </div>
-*/
+            </div>
+        );
+    }
+}
+
+export default Partner;

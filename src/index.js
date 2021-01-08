@@ -9,7 +9,6 @@ import Partner from './components/Partner/Partner';
 import StreamingPlan from './components/StreamingPlan/StreamingPlan';
 import SocialMedia from './components/SocialMedia/SocialMedia';
 import Reviews from './components/Reviews/Reviews';
-import Bingo from './components/Bingo/Bingo';
 import Datenschutz from './components/Datenschutz/Datenschutz';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import IFrameComponent from './components/IFrameComponent/IFrameComponent';
@@ -49,7 +48,6 @@ ReactDOM.render(
                                 component={SocialMedia}
                             />
                             <Route path="/reviews" component={Reviews} />
-                            <Route path="/bingo" component={Bingo} />
                             <Route
                                 path="/datenschutz"
                                 component={Datenschutz}
