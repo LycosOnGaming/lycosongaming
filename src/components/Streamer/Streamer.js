@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import data from './streamer.json';
+import axios from "axios";
 
 import './Streamer.scss';
 
@@ -8,22 +8,28 @@ class Streamer extends Component {
         super(props);
 
         this.state = {
-            isToggle: false
+            streamer: [],
+            isHover: false
         };
-        
-        this.showDiscription = this.showDiscription.bind(this);
-        this.hideDiscription = this.hideDiscription.bind(this);
     }
 
-    showDiscription() {
-        this.setState({
-            isToggle: !this.state.isToggle
+    componentDidMount() {
+        axios
+        .get("https://www.lycosongaming.de/api/streamPartner/")
+        .then(({ data }) => {
+            this.setState({ streamer: data });
         });
     }
 
-    hideDiscription() {
+    onMouseEnterHandler = selected => {
         this.setState({
-            isToggle: !this.state.isToggle
+            isHover: selected
+        });
+    }
+
+    onMouseLeaveHandler = selected => {
+        this.setState({
+            isHover: !selected
         });
     }
 
@@ -33,30 +39,34 @@ class Streamer extends Component {
                 <h1>Streamer</h1>
                 <div className="col-lg-12">
                     <div className="Streamer-wrapper">
-                        {data.streamer.map((streamer) => {
-                            return (
-                                <div>
-                                    <h4>{streamer.gamer}</h4>
-                                    <div className="dropdown">
-                                        <img
-                                            src={streamer.img}
-                                            onMouseEnter={this.showDiscription}
-                                            onMouseLeave={this.hideDiscription}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                window.open(
-                                                    streamer.url,
-                                                    '_blank'
-                                                  );
-                                            }}
-                                            alt="banner"
-                                        />
-                                    </div>
-                                    <div className="dropdown-content" style={{display: this.state.isToggle ? 'block': 'none'}}>
-                                        <div className="desc" dangerouslySetInnerHTML={{__html: streamer.description}}/>
-                                    </div>
-                                </div>  
-                            );
+                        {this.state.streamer.map((streamer) => {
+                            if (streamer.Img !== "") {
+                                return (
+                                    <div key={streamer.Gamer}>
+                                        <h4>{streamer.Gamer}</h4>
+                                        <div className="dropdown">
+                                            <img
+                                                src={streamer.Img}
+                                                onMouseEnter={() => this.onMouseEnterHandler(streamer)}
+                                                onMouseLeave={() => this.onMouseLeaveHandler(streamer)}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    window.open(
+                                                        streamer.Url,
+                                                        '_blank'
+                                                      );
+                                                }}
+                                                alt="banner"
+                                            />
+                                            <div className="dropdown-content" style={{display: this.state.isHover.Id === streamer.Id ? 'block': 'none'}}>
+                                                <div className="desc" dangerouslySetInnerHTML={{__html: streamer.Description}}/>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                );
+                            } else {
+                                return null;
+                            }
                         })}
                     </div>
                 </div>

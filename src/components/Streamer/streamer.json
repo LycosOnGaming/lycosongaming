@@ -2,45 +2,73 @@
   "streamer": [
     {
       "gamer": "Hase",
+      "id": "Hase",
       "url": "//www.youtube.com/lycosongaming",
       "img": "https://www.lycosongaming.de/assets/images/logosmallytbranding.png",
       "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
     },
     {
       "gamer": "Mentor",
+      "id": "Mentor",
       "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
       "img": "https://www.lycosongaming.de/assets/images/YTLogoGoody.png",
-      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+      "description": "Die wichtigsten Erfolge Trophäen und Gaming News powered by Goody :)"
     },
     {
       "gamer": "Hunter",
-      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "id": "Hunter",
+      "url": "//www.youtube.com/channel/UC1ctyctE3CPa1OL_zJZqVcw",
       "img": "https://www.lycosongaming.de/assets/images/dekaylogo.png",
-      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+      "description": "Gamer aus Leidenschaft!<br /><br />Meine erste Berührung mit Videospielen fand in den 80ern mit dem Master System statt."
     },
     {
       "gamer": "Lautschi",
-      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "id": "Lautschi",
+      "url": "//www.youtube.com/channel/UCVketFPJs4t7LHarxBmLKPg",
       "img": "https://www.lycosongaming.de/assets/images/lautschmerlogo.png",
-      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+      "description": "Hallo, ich bin der Lautschmer, ein recht sympathischer Let´s Player aus der Pfalz"
     },
     {
       "gamer": "Cacie",
-      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "id": "Cacie",
+      "url": "//www.youtube.com/channel/UCZOyS6yfOsWfmg7N5lSzYKw",
       "img": "https://www.lycosongaming.de/assets/images/cacielogo.png",
-      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+      "description": "Hallo Du; bist Du auch ein Kind der 90er und GAMER?"
     },
     {
       "gamer": "Parttime Insane",
-      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "id": "ParttimeInsane",
+      "url": "//www.youtube.com/channel/UCqF7FbCEG-P2wXyLJvky7fA",
       "img": "https://www.lycosongaming.de/assets/images/parttimelogo.png",
-      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+      "description": "Herzlich Willkommen bei Parttime Insane.<br /><br />Er ist der diabolische Mogwei, sie ist die Ehefrau eines literarischen Superschurken."
     },
     {
       "gamer": "Rollie",
-      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "id": "Rollie",
+      "url": "//www.youtube.com/channel/UCYzQtUvOjKcK0h9QrwLAZLQ",
       "img": "https://www.lycosongaming.de/assets/images/rollielogo.png",
-      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+      "description": "Ich mache vor allem Let´s plays von Simulationen, aber auch Streams von Rennspielen."
+    },
+    {
+      "gamer": "Kami",
+      "id": "Kami",
+      "url": "//www.twitch.tv/kami_no_teki",
+      "img": "",
+      "description": "Verrückter Typ mit einem leichten Schaden.Creator of Sharky the Shark und Podcast Inhaber von Nerd Talk."
+    },
+    {
+      "gamer": "Homunkulus",
+      "id": "Homunkulus",
+      "url": "//www.twitch.tv/homunkoluss",
+      "img": "",
+      "description": "Ich heiße Gianna, mag Klippen lieber als Sand #einHerzfürSteine und in meinen Adern fließt Schokolade!"
+    },
+    {
+      "gamer": "Entertainment 4you",
+      "id": "4you",
+      "url": "//www.twitch.tv/entertainment_4you",
+      "img": "",
+      "description": "Ein Trio verrückter Gamer das Wahnsinn zu seinem Prinzip gemacht hat"
     }
   ]
 }

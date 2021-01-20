@@ -7,10 +7,6 @@
         cursor: pointer;
     }
 
-    div {
-        margin-bottom: 2%;
-    }
-
     .Streamer-wrapper {
         display: flex;
         flex-direction: row;
@@ -35,7 +31,6 @@
     }
     
     .dropdown-content {
-        display: none;
         justify-content: center;
         position: absolute;
         background-color: #242424;
@@ -43,8 +38,8 @@
         transition: width 2s;
         transition-duration: 5s;
         border-radius: 4rem;
-        top: 100%;
         z-index: 1;
+        top: 100%;
     }
 
     .desc {
