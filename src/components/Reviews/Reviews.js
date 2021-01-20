@@ -40,8 +40,8 @@ class Reviews extends Component {
                                                 gamePlaylist: game.Playlist,
                                                 gameBeschreibung:
                                                     game.Beschreibung,
-                                                gamePartnerLink:
-                                                    game.PartnerLink,
+                                                gameStreamerLink:
+                                                    game.StreamerLink,
                                                 gameSpiel: game.Spiel
                                             }
                                         }}
@@ -75,7 +75,7 @@ class Reviews extends Component {
                                 <Link
                                     to={
                                         this.props.history.location.query
-                                            .gamePartnerLink
+                                            .gameStreamerLink
                                     }
                                     target="_blank"
                                 >

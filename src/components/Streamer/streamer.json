@@ -1,0 +1,46 @@
+{
+  "streamer": [
+    {
+      "gamer": "Hase",
+      "url": "//www.youtube.com/lycosongaming",
+      "img": "https://www.lycosongaming.de/assets/images/logosmallytbranding.png",
+      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+    },
+    {
+      "gamer": "Mentor",
+      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "img": "https://www.lycosongaming.de/assets/images/YTLogoGoody.png",
+      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+    },
+    {
+      "gamer": "Hunter",
+      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "img": "https://www.lycosongaming.de/assets/images/dekaylogo.png",
+      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+    },
+    {
+      "gamer": "Lautschi",
+      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "img": "https://www.lycosongaming.de/assets/images/lautschmerlogo.png",
+      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+    },
+    {
+      "gamer": "Cacie",
+      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "img": "https://www.lycosongaming.de/assets/images/cacielogo.png",
+      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+    },
+    {
+      "gamer": "Parttime Insane",
+      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "img": "https://www.lycosongaming.de/assets/images/parttimelogo.png",
+      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+    },
+    {
+      "gamer": "Rollie",
+      "url": "//www.youtube.com/channel/UCW_6rlcjEoYGpV0nWoiiW8Q",
+      "img": "https://www.lycosongaming.de/assets/images/rollielogo.png",
+      "description": "LycosOnGaming - Let's Plays mit Dialekt :-)"
+    }
+  ]
+}

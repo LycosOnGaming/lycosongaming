@@ -5,8 +5,7 @@ import ScrollToTop from 'react-router-scroll-top';
 import Header from './components/Header/Header';
 import FixedNavigation from './components/Navigation/Navigation';
 import Landingpage from './components/Landingpage/Landingpage';
-import Partner from './components/Partner/Partner';
-import StreamingPlan from './components/StreamingPlan/StreamingPlan';
+import Streamer from './components/Streamer/Streamer';
 import SocialMedia from './components/SocialMedia/SocialMedia';
 import Reviews from './components/Reviews/Reviews';
 import Datenschutz from './components/Datenschutz/Datenschutz';
@@ -39,11 +38,7 @@ ReactDOM.render(
                         </div>
                         <div className="col-lg-8 content">
                             <Route exact path="/" component={Landingpage} />
-                            <Route path="/partner" component={Partner} />
-                            <Route
-                                path="/streamingplan"
-                                component={StreamingPlan}
-                            />
+                            <Route path="/streamer" component={Streamer} />
                             <Route
                                 path="/socialmedia"
                                 component={SocialMedia}

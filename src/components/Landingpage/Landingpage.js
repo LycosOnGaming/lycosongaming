@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Youtube from '../../assets/images/lycosYT.png';
 import Twitch from '../../assets/images/lycosTwitch.png';
-import Termine from '../../assets/images/terminePanel.png';
 import LycosHead from '../../assets/images/lycosHead.png';
 
 import IFrameComponent from '../IFrameComponent/IFrameComponent';
@@ -27,7 +26,7 @@ class Landingpage extends Component {
                         oder als Let's Play. Seit April 2016 lasse ich meinem
                         Hobby auf
                     </div>
-                    <div className="col-lg-4 col-sm-12 left-side banner">
+                    <div className="col-lg-6 col-sm-12 left-side banner">
                         <Link
                             to="//www.youtube.com/lycosongaming"
                             target="_blank"
@@ -35,17 +34,12 @@ class Landingpage extends Component {
                             <img src={Youtube} alt="youtube" />
                         </Link>
                     </div>
-                    <div className="col-lg-4 col-sm-12 right-side banner">
+                    <div className="col-lg-6 col-sm-12 right-side banner">
                         <Link
                             to="//www.twitch.tv/lycosongaming"
                             target="_blank"
                         >
                             <img src={Twitch} alt="twitch" />
-                        </Link>
-                    </div>
-                    <div className="col-lg-4 col-sm-12 right-side banner">
-                        <Link to="/streamingplan" target="_self">
-                            <img src={Termine} alt="dates" />
                         </Link>
                     </div>
                     <div>

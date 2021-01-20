@@ -10,7 +10,7 @@ class Impressum extends Component {
                     <h5>Angaben gemäß § 5 TMG:</h5>
                     Benjamin Roth
                     <br />
-                    Breslauer Str. 57
+                    Hier kommt ein Postfach hin
                     <br />
                     65779 Kelkheim
                 </div>
@@ -27,7 +27,7 @@ class Impressum extends Component {
                     </h5>
                     Benjamin Roth
                     <br />
-                    Breslauer Str. 57
+                    Hier kommt ein Postfach hin
                     <br />
                     65779 Kelkheim
                 </div>
