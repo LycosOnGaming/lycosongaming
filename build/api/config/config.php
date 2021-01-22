@@ -5,6 +5,5 @@ $database = 'db292110x2897252';
 $password = '#LycosOnGaming1';
 
 $dbPlannedGames = 'plannedGames';
-$dbGameReviews = 'gameReviews';
 $dbStreamPartner = 'streamPartner';
 ?>
