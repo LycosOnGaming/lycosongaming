@@ -14,7 +14,9 @@
   "agent": null,
   "allow": [],
   "ignore": [
+    "/.github/*",
     "/.vscode",
+    "/admin/*",
     "/build/*",
     "/node_modules/*",
     "/public/*",

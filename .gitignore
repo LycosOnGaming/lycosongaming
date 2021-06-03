@@ -353,5 +353,9 @@ MigrationBackup/
 .ionide/
 
 # exclude folders
+.github/
+.vscode/
 build/
 public/
+src/components/Admin/
+src/components/AddNewStreamer/

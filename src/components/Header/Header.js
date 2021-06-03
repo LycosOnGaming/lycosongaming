@@ -6,17 +6,18 @@ import './Header.scss';
 class Header extends Component {
     render() {
         return (
-            <div className="Header">
-                <div className="Header-header">
-                    <Link to="/">
-                        <img
-                            src={lycosBanner}
-                            className="Header-banner"
-                            alt="banner"
-                        />
-                    </Link>
+            <div className="container-fluid px-0 Header">
+                <div className="row">
+                    <div className="col-12">
+                        <Link to="/">
+                            <img
+                                src={lycosBanner}
+                                alt="banner"
+                            />
+                        </Link>
+                    </div>
                 </div>
-            </div>
+			</div>
         );
     }
 }

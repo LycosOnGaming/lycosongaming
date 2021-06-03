@@ -6,18 +6,20 @@ import './Footer.scss';
 class Footer extends Component {
     render () {
         return (
-            <div className="Footer">
-                <ul>
-                    <li>
-                        <Link to="/datenschutz">Datenschutzerklärung</Link>
-                    </li>
-                    <li>
-                        <Link to="/impressum">Impressum</Link>
-                    </li>
-                    <li>
-                        <Link to="/disclaimer">Disclaimer</Link>
-                    </li>
-                </ul>
+            <div className="container-fluid Footer position-absolute mx-auto">
+                <div className="container">
+                    <div className="row text-center">
+                        <div className="col-12 col-md-4">
+                            <Link to="/datenschutz">Datenschutzerklärung</Link>
+                        </div>
+                        <div className="col-12 col-md-4">
+                            <Link to="/impressum">Impressum</Link>
+                        </div>
+                        <div className="col-12 col-md-4">
+                            <Link to="/disclaimer">Disclaimer</Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

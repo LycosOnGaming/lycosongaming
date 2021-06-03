@@ -31,42 +31,48 @@ class FixedNavigation extends Component {
             : 'navbar-toggler navbar-toggler-right collapsed';
 
         return (
-            <div className="Navigation">
-                <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <button
-                        onClick={this.toggleNavbar}
-                        className={`${classTwo}`}
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className={`${classOne}`} id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
-                        {data.navigation.map((navitems) => {
-                            return (
-                                <li key={navitems.title + '_'} className="nav-item">
-                                    <Link
-                                        onClick={this.toggleNavbar}
-                                        exact={true}
-                                        className="nav-link"
-                                        to={navitems.src}
-                                    >
-                                        {navitems.title}
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                        </ul>
+            <div className="container-fluid sticky-top bg-dark Navigation">
+                <div className="row">
+                    <div className="col-10 px-0">
+                        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                            <button
+                                onClick={this.toggleNavbar}
+                                className={`${classTwo}`}
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                            >
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className={`${classOne}`} id="navbarSupportedContent">
+                                <ul className="navbar-nav mr-auto">
+                                {data.navigation.map((navitems) => {
+                                    return (
+                                        <li key={navitems.title + '_'} className="nav-item">
+                                            <Link
+                                                onClick={this.toggleNavbar}
+                                                exact={true}
+                                                className="nav-link"
+                                                to={navitems.src}
+                                            >
+                                                {navitems.title}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
+                                </ul>
+                            </div>
+                        </nav>
                     </div>
-                </nav>
-                <Link exact={true} to="/">
-                    <img src={Logo} alt="banner" />
-                </Link>
+                    <div className="col-2 pl-0">
+                        <Link exact={true} to="/">
+                            <img className="mt-1 float-right" src={Logo} alt="banner" />
+                        </Link>
+                    </div>
+                </div>
             </div>
         );
     }
