@@ -59,7 +59,7 @@ class Reviews extends Component {
                                     <Link to="/reviews">ZURÜCK</Link>
                                 </div>
                                 <div
-                                    className="col-lg-12 text-center mb-3 reviews-img"
+                                    className="col-lg-12 justify-content-center mb-3 reviews-img"
                                     dangerouslySetInnerHTML={{
                                         __html: this.props.history.location.query
                                             .gamereviews_Playlist
