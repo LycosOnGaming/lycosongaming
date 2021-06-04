@@ -15,7 +15,7 @@ class Streamer extends Component {
 
     componentDidMount() {
         axios
-        .get("https://www.lycosongaming.de/api/streamPartner/")
+        .get("https://www.lycosongaming.de/api/streampartner/")
         .then(({ data }) => {
             this.setState({ streamer: data });
         });
@@ -43,26 +43,26 @@ class Streamer extends Component {
                     <div className="col-12">
                         <div className="Streamer-wrapper">
                             {this.state.streamer.map((streamer) => {
-                                if (streamer.Img !== "") {
+                                if (streamer.streampartner_Img !== "") {
                                     return (
-                                        <div key={streamer.Gamer}>
-                                            <h4>{streamer.Gamer}</h4>
+                                        <div key={streamer.streampartner_Gamer}>
+                                            <h4>{streamer.streampartner_Gamer}</h4>
                                             <div className="dropdown">
                                                 <img
-                                                    src={streamer.Img}
+                                                    src={streamer.streampartner_Img}
                                                     onMouseEnter={() => this.onMouseEnterHandler(streamer)}
                                                     onMouseLeave={() => this.onMouseLeaveHandler(streamer)}
                                                     onClick={(e) => {
                                                         e.preventDefault();
                                                         window.open(
-                                                            streamer.Url,
+                                                            streamer.streampartner_Url,
                                                             '_blank'
                                                         );
                                                     }}
                                                     alt="banner"
                                                 />
-                                                <div className="dropdown-content" style={{display: this.state.isHover.Id === streamer.Id ? 'block': 'none'}}>
-                                                    <div className="desc" dangerouslySetInnerHTML={{__html: streamer.Description}}/>
+                                                <div className="dropdown-content" style={{display: this.state.isHover.streampartner_ID === streamer.streampartner_ID ? 'block': 'none'}}>
+                                                    <div className="desc" dangerouslySetInnerHTML={{__html: streamer.streampartner_Description}}/>
                                                 </div>
                                             </div>
                                         </div>  
