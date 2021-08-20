@@ -32,6 +32,7 @@ class FixedNavigation extends Component {
                         return (
                             <li key={navitems.title + '_'} className="nav-item">
                                 <Link
+                                    onClick={this.toggleMenu}
                                     exact={true}
                                     className="nav-link"
                                     to={navitems.src}
