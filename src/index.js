@@ -15,6 +15,7 @@ import Impressum from './components/Impressum/Impressum';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import IFrameComponent from './components/IFrameComponent/IFrameComponent';
 import Footer from './components/Footer/Footer';
+import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/main.scss';
 import thunk from 'redux-thunk';

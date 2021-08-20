@@ -2,18 +2,22 @@
   "navigation": [
     {
       "title": "Startseite",
+      "icon": "fa fa-home",
       "src": "/"
     },
     {
       "title": "Streamer",
+      "icon": "fa fa-television",
       "src": "/streamer"
     },
     {
       "title": "Social Media",
+      "icon": "fa fa-commenting-o",
       "src": "/socialmedia"
     },
     {
       "title": "Spiele Reviews",
+      "icon": "fa fa-gamepad",
       "src": "/reviews"
     }
   ]
