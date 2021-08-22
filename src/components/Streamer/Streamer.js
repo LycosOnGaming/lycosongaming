@@ -59,7 +59,8 @@ class Streamer extends Component {
                                                             '_blank'
                                                         );
                                                     }}
-                                                    alt="banner"
+                                                    alt=""
+                                                    title={streamer.streampartner_AltText}
                                                 />
                                                 <div className="dropdown-content" style={{display: this.state.isHover.streampartner_ID === streamer.streampartner_ID ? 'block': 'none'}}>
                                                     <div className="desc" dangerouslySetInnerHTML={{__html: streamer.streampartner_Description}}/>
