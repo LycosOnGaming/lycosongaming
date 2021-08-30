@@ -13,7 +13,6 @@ import Reviews from './components/Reviews/Reviews';
 import Datenschutz from './components/Datenschutz/Datenschutz';
 import Impressum from './components/Impressum/Impressum';
 import Disclaimer from './components/Disclaimer/Disclaimer';
-import IFrameComponent from './components/IFrameComponent/IFrameComponent';
 import Footer from './components/Footer/Footer';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -36,36 +35,22 @@ ReactDOM.render(
                     <FixedNavigation />
                     <Header />
                     <div className="container-fluid mt-5">
-                        <div className="row">
-                            <div className="col-2 d-lg-block d-md-none d-sm-none d-none">
-                                <div className="container">
-                                    <IFrameComponent bannertype="gameWidgetBanner" />
-                                </div>
-                            </div>
-                            <div className="col-12 col-lg-8">
-                                <div className="container">
-                                    <Route exact path="/" component={Landingpage} />
-                                    <Route path="/streamer" component={Streamer} />
-                                    <Route
-                                        path="/socialmedia"
-                                        component={SocialMedia}
-                                    />
-                                    <Route path="/reviews" component={Reviews} />
-                                    <Route path="/admin" component={Admin} />
-                                    <Route path="/addNewStreamer" component={AddNewStreamer} />
-                                    <Route
-                                        path="/datenschutz"
-                                        component={Datenschutz}
-                                    />
-                                    <Route path="/impressum" component={Impressum} />
-                                    <Route path="/disclaimer" component={Disclaimer} />
-                                </div>
-                            </div>
-                            <div className="col-2 d-lg-block d-md-none d-sm-none d-none">
-                                <div className="container">
-                                    <IFrameComponent bannertype="gameChartsBanner" />
-                                </div>
-                            </div>
+                        <div className="container">
+                            <Route exact path="/" component={Landingpage} />
+                            <Route path="/streamer" component={Streamer} />
+                            <Route
+                                path="/socialmedia"
+                                component={SocialMedia}
+                            />
+                            <Route path="/reviews" component={Reviews} />
+                            <Route path="/admin" component={Admin} />
+                            <Route path="/addNewStreamer" component={AddNewStreamer} />
+                            <Route
+                                path="/datenschutz"
+                                component={Datenschutz}
+                            />
+                            <Route path="/impressum" component={Impressum} />
+                            <Route path="/disclaimer" component={Disclaimer} />
                         </div>
                     </div>
                     <Footer />

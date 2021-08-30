@@ -12,8 +12,8 @@ class Landingpage extends Component {
         return (
             <div className="Landingpage">
                 <div className="row">
-                    <div className="col-12 mb-3">
-                        <h1>
+                    <div className="col-12 mb-3 p-0">
+                        <h1 className="text-sm-left text-md-center">
                             Let's Plays mit Dialekt
                             <img
                                 className="lycosHead"
@@ -28,8 +28,8 @@ class Landingpage extends Component {
                             Hobby auf
                         </div>
                     </div>
-                    <div className="col-12 mb-3">
-                        <div className="col-lg-6 col-sm-12 float-left text-center">
+                    <div className="col-12 mb-3 p-0">
+                        <div className="col-lg-6 col-sm-12 mb-3 mb-lg-0 float-left text-center">
                             <Link
                                 to="//www.youtube.com/lycosongaming"
                                 target="_blank"
@@ -46,7 +46,7 @@ class Landingpage extends Component {
                             </Link>
                         </div>
                     </div>
-                    <div className="col-12 mb-3">
+                    <div className="col-12 mb-3 p-0">
                         <div>
                             freien lauf, da ich dies aber nur aus Spaß an der Freude
                             betreib habt bitte Verständnis dafür, dass ich nicht
@@ -76,18 +76,13 @@ class Landingpage extends Component {
                             <h1 className="text-left">Lycos</h1>
                         </div>
                     </div>
-                    <div className="col-lg-12 p-0">
-                        <div className="col-lg-6 col-sm-12 float-left text-center">
-                            <div>Live-Streams</div>
-                            <IFrameComponent bannertype="liveStreamWidget" />
-                        </div>
-                        <div className="col-lg-6 col-sm-12 float-right text-center">
-                            <div>Aktuellstes Let's Play</div>
-                            <IFrameComponent bannertype="letsPlayWidget" />
-                        </div>
+                    <div className="col-lg-6 col-sm-12 p-0 pr-lg-2 float-left text-center">
+                        <div>Live-Streams</div>
+                        <IFrameComponent bannertype="liveStreamWidget" />
                     </div>
-                    <div className="col-lg-12 mt-2 text-center">
-                        <IFrameComponent bannertype="singleBannerWidget" />
+                    <div className="col-lg-6 col-sm-12 p-0 pl-lg-2 float-right text-center">
+                        <div>Aktuellstes Let's Play</div>
+                        <IFrameComponent bannertype="letsPlayWidget" />
                     </div>
                 </div>
             </div>
