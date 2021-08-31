@@ -7,13 +7,14 @@
         right: 5px;
         white-space: nowrap;
         overflow: hidden;
+        width: 80px;
 
         > div {
             cursor: pointer;
         }
 
         i {
-            transition: all .2s ease-in-out;
+            transition: all 0.2s ease-in-out;
         }
     }
 
@@ -40,23 +41,23 @@
         overflow: hidden;
 
         > div {
-            transition: all .2s ease-in-out;
-            justify-content: flex-start!important;
-            
+            transition: all 0.2s ease-in-out;
+            justify-content: flex-start !important;
+
             i {
                 left: 3px;
                 bottom: -1px;
                 transform: rotate(270deg);
 
                 &:before {
-                    content: "\f00d";
+                    content: '\f00d';
                 }
             }
         }
 
         .navbar-items {
             font-size: 1.25rem;
-            display: flex!important;
+            display: flex !important;
         }
     }
 
