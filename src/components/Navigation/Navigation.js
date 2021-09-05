@@ -22,9 +22,9 @@ class FixedNavigation extends Component {
     render() {
         return (
             <div className="Navigation">
-                <div id="navbar" className="">
-                    <div onClick={this.toggleMenu} className="mt-1 position-relative d-flex justify-content-center">
-                        <i className="fa fa-bars main-menu position-absolute mx-2 my-2 fa-2x"></i>
+                <div id="navbar">
+                    <div id="navigation" onClick={this.toggleMenu}>
+                        <i className="fa fa-bars main-menu"></i>
                         <img src={Logo} alt="banner" />
                     </div>
                     <ul className="navbar-nav navbar-items d-none">
