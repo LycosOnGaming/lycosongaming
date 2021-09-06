@@ -5,6 +5,8 @@ body {
     color: $white;
     background-color: $black;
     overflow-x: hidden;
+    position: relative;
+    height: 100%;
 
     h1 {
         font-family: $base-font;
@@ -13,5 +15,10 @@ body {
     a {
         text-decoration: none !important;
         cursor: pointer;
+    }
+
+    #mainContent {
+        min-height: 100vh;
+        padding-bottom: 60px;
     }
 }

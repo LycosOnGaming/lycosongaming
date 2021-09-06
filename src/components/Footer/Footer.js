@@ -6,9 +6,9 @@ import './Footer.scss';
 class Footer extends Component {
     render () {
         return (
-            <div className="container-fluid Footer position-absolute mx-auto">
-                <div className="container">
-                    <div className="row text-center">
+            <footer className="Footer container-fluid position-absolute mx-auto">
+                <div className="container d-flex flex-column justify-content-center h-100">
+                    <div className="row text-white">
                         <div className="col-12 col-md-4">
                             <Link to="/datenschutz">Datenschutzerklärung</Link>
                         </div>
@@ -20,7 +20,7 @@ class Footer extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         )
     }
 }

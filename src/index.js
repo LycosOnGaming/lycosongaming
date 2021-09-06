@@ -34,7 +34,7 @@ ReactDOM.render(
                 <ScrollToTop>
                     <FixedNavigation />
                     <Header />
-                    <div className="container-fluid mt-5">
+                    <div id="mainContent" className="container-fluid mt-5">
                         <div className="container">
                             <Route exact path="/" component={Landingpage} />
                             <Route path="/streamer" component={Streamer} />
