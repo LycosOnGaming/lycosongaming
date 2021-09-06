@@ -1,21 +1,32 @@
 .Navigation {
     #navbar {
-        z-index: 10000;
-        transition: 0.5s;
-        overflow-x: hidden;
+        z-index: 1030;
+        transition: all 0.5s;
         position: fixed;
-        right: 5px;
+        top: 0px;
+        right: 0px;
         white-space: nowrap;
+        padding-top: 60px;
+        height: 80px;
         overflow: hidden;
-        width: 80px;
+        scrollbar-width: none;
+        width: 60px;
 
         > div {
             cursor: pointer;
         }
 
         i {
-            transition: all 0.2s ease-in-out;
+            padding-left: 10px;
+            transition: all 0.4s ease-in-out;
         }
+    }
+
+    #navigation {
+        opacity: 1 !important;
+        position: absolute;
+        top: 5px;
+        left: 0;
     }
 
     .nav-link {
@@ -29,24 +40,28 @@
     .main-menu {
         font-size: 36px;
         color: #000;
+        position: absolute;
+        top: 7px;
+        transition: all .4s ease-in-out;
+        right: 10px;
     }
 
     .open {
         width: 400px !important;
-        height: 100%;
-        max-width: 100%;
-        right: 0px !important;
-        padding-left: 10px;
+        max-width: 100% !important;
         background-color: #5a0069;
-        overflow: hidden;
+        height: 100% !important;
+        max-height: 100%;
+        padding-left: 10px;
 
         > div {
-            transition: all 0.2s ease-in-out;
+            transition: all 0.4s ease-in-out;
+            padding-left: 5px;
             justify-content: flex-start !important;
 
             i {
-                left: 3px;
-                bottom: -1px;
+                top: 15px;
+                left: 13px;
                 transform: rotate(270deg);
 
                 &:before {

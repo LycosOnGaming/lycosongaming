@@ -72,21 +72,6 @@ class Reviews extends Component {
                                             .gamereviews_Description
                                     }}
                                 />
-                                <div className="col-lg-12">
-                                    Kaufen:{' '}
-                                    <Link
-                                        to={
-                                            this.props.history.location.query
-                                                .gamereviews_Partnerlink
-                                        }
-                                        target="_blank"
-                                    >
-                                        {
-                                            this.props.history.location.query
-                                                .gamereviews_Game
-                                        }
-                                    </Link>
-                                </div>
                                 <div className="col-lg-12 mt-3 mb-3">
                                     <Link to="/reviews">ZURÜCK</Link>
                                 </div>
