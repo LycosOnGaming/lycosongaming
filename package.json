@@ -13,7 +13,7 @@
     "formik": "^1.5.7",
     "jquery": "^3.6.0",
     "mysql": "^2.17.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "react": "^16.8.6",
     "react-app-rewire-hot-loader": "^2.0.1",
     "react-dom": "^16.8.6",
