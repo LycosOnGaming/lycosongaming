@@ -37,7 +37,7 @@ class Streamer extends Component {
         return (
             <div className="Streamer">
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 text-center">
                         <h1>Streamer</h1>
                     </div>
                     <div className="col-12">
@@ -45,7 +45,7 @@ class Streamer extends Component {
                             {this.state.streamer.map((streamer) => {
                                 if (streamer.streampartner_Img !== "") {
                                     return (
-                                        <div key={streamer.streampartner_Gamer}>
+                                        <div key={streamer.streampartner_Gamer} className="mb-3">
                                             <h4>{streamer.streampartner_Gamer}</h4>
                                             <div className="dropdown">
                                                 <img
