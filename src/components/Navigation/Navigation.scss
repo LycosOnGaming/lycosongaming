@@ -42,18 +42,16 @@
         color: #000;
         position: absolute;
         top: 7px;
-        transition: all .4s ease-in-out;
+        transition: all 0.4s ease-in-out;
         right: 10px;
     }
 
     .open {
         width: 400px !important;
-        max-width: 100% !important;
-        background-color: #5a0069;
-        //background: linear-gradient(180deg,#2D769C, #5a0069);
+        //background-color: #5a0069;
+        background: linear-gradient(180deg, #2d769c, #5a0069);
         height: 100vh !important;
         transition: all 2s;
-        max-height: 100%;
         padding-left: 10px;
 
         > div {
