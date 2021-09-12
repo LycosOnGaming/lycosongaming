@@ -29,7 +29,7 @@ class FixedNavigation extends Component {
                         <i className="fa fa-bars main-menu"></i>
                         <img src={Logo} alt="banner" />
                     </div>
-                    <ul className="navbar-nav navbar-items d-none">
+                    <ul className="navbar-nav navbar-items">
                     {data.navigation.map((navitems) => {
                         return (
                             <li key={navitems.title + '_'} className="nav-item">

@@ -22,6 +22,10 @@
         }
     }
 
+    .navbar-nav {
+        display: none;
+    }
+
     #navigation {
         opacity: 1 !important;
         position: absolute;
@@ -71,7 +75,7 @@
 
         .navbar-items {
             font-size: 1.25rem;
-            display: flex !important;
+            display: flex;
         }
     }
 
