@@ -13,6 +13,7 @@ $viewport-extra-small: 48em / 1.6;
         overflow: hidden;
         scrollbar-width: none;
         width: 60px;
+        background: linear-gradient(180deg, #2d769c, #5a0069);
 
         > div {
             cursor: pointer;
