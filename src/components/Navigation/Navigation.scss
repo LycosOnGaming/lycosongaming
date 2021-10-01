@@ -1,3 +1,5 @@
+$viewport-extra-small: 48em / 1.6;
+
 .Navigation {
     #navbar {
         z-index: 1030;
@@ -52,8 +54,8 @@
 
     .open {
         width: 400px !important;
-        background-color: #5a0069;
-        //background: linear-gradient(180deg, #2d769c, #5a0069);
+        //background-color: #5a0069;
+        background: linear-gradient(180deg, #2d769c, #5a0069);
         height: 100vh !important;
         padding-left: 10px;
 
@@ -81,5 +83,11 @@
 
     img {
         height: 50px;
+    }
+
+    @media (max-width: $viewport-extra-small) {
+        .open {
+            width: 100% !important;
+        }
     }
 }
