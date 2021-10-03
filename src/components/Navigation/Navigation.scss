@@ -5,15 +5,16 @@ $viewport-extra-small: 48em / 1.6;
         z-index: 1030;
         transition: all 0.5s;
         position: fixed;
-        top: 0px;
-        right: 0px;
+        top: 5px;
+        right: 5px;
         white-space: nowrap;
-        padding-top: 60px;
-        height: 80px;
+        padding-top: 50px;
+        height: 50px;
         overflow: hidden;
         scrollbar-width: none;
-        width: 60px;
+        width: 50px;
         background: linear-gradient(180deg, #2d769c, #5a0069);
+        border-radius: 25px;
 
         > div {
             cursor: pointer;
@@ -32,7 +33,7 @@ $viewport-extra-small: 48em / 1.6;
     #navigation {
         opacity: 1 !important;
         position: absolute;
-        top: 5px;
+        top: 0;
         left: 0;
     }
 
@@ -55,10 +56,12 @@ $viewport-extra-small: 48em / 1.6;
 
     .open {
         width: 400px !important;
-        //background-color: #5a0069;
         background: linear-gradient(180deg, #2d769c, #5a0069);
         height: 100vh !important;
         padding-left: 10px;
+        border-radius: 25px 0 0 0!important;
+        top: 0 !important;
+        right: 0 !important;
 
         > div {
             transition: all 0.4s ease-in-out;
@@ -74,6 +77,10 @@ $viewport-extra-small: 48em / 1.6;
                     content: '\f00d';
                 }
             }
+        }
+
+        #navigation {
+            top: 5px;
         }
 
         .navbar-items {
