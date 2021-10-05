@@ -3,22 +3,32 @@
     {
       "title": "Startseite",
       "icon": "fa fa-home",
+      "target": "",
       "src": "/"
     },
     {
       "title": "Streamer",
       "icon": "fa fa-television",
+      "target": "",
       "src": "/streamer"
     },
     {
       "title": "Social Media",
       "icon": "fa fa-commenting-o",
+      "target": "",
       "src": "/socialmedia"
     },
     {
       "title": "Spiele Reviews",
       "icon": "fa fa-gamepad",
+      "target": "",
       "src": "/reviews"
+    },
+    {
+      "title": "Bunny Merch",
+      "icon": "fa fa-shopping-cart",
+      "target": "_blank",
+      "src": "//www.getshirts.de/index.php?page=shop&id=lycosongaming"
     }
   ]
 }

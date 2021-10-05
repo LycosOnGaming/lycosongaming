@@ -37,6 +37,7 @@ class FixedNavigation extends Component {
                                     onClick={this.handleShowMenu}
                                     exact={true}
                                     className="nav-link"
+                                    target={navitems.target}
                                     to={navitems.src}
                                 >
                                     <i className={navitems.icon}></i> {navitems.title}
