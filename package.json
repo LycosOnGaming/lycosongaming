@@ -9,6 +9,7 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
+    "env-cmd": "^10.1.0",
     "font-awesome": "^4.7.0",
     "formik": "^1.5.7",
     "jquery": "^3.6.0",
@@ -35,10 +36,11 @@
     "react-scripts": "^3.4.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app-rewired eject"
+	"start": "env-cmd -f .env.env react-scripts start",
+    "build:staging": "env-cmd -f .env.env react-scripts build",
+    "build:production": "env-cmd -f .env.env react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [

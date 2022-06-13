@@ -29,6 +29,12 @@
       "icon": "fa fa-shopping-cart",
       "target": "_blank",
       "src": "//www.getshirts.de/index.php?page=shop&id=lycosongaming"
+    },
+    {
+      "title": "Stream Tool",
+      "icon": "",
+      "target": "",
+      "src": "/tool"
     }
   ]
 }

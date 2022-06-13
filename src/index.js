@@ -10,6 +10,7 @@ import Landingpage from './components/Landingpage/Landingpage';
 import Streamer from './components/Streamer/Streamer';
 import SocialMedia from './components/SocialMedia/SocialMedia';
 import Reviews from './components/Reviews/Reviews';
+import Tool from './components/Tool/Tool';
 import Datenschutz from './components/Datenschutz/Datenschutz';
 import Impressum from './components/Impressum/Impressum';
 import Disclaimer from './components/Disclaimer/Disclaimer';
@@ -43,6 +44,7 @@ ReactDOM.render(
                                 component={SocialMedia}
                             />
                             <Route path="/reviews" component={Reviews} />
+                            <Route path="/tool" component={Tool} />
                             <Route path="/admin" component={Admin} />
                             <Route path="/addNewStreamer" component={AddNewStreamer} />
                             <Route
