@@ -353,6 +353,7 @@ MigrationBackup/
 .ionide/
 
 # exclude folders
+.env.env
 .github/
 .vscode/
 build/
