@@ -28,6 +28,7 @@
     "redux-thunk": "^2.3.0",
     "superagent": "^5.1.0",
     "superagent-jsonp": "^0.2.1",
+    "twitter-api-v2": "^1.12.7",
     "yup": "^0.27.0"
   },
   "devDependencies": {
@@ -36,7 +37,7 @@
     "react-scripts": "^3.4.0"
   },
   "scripts": {
-	"start": "env-cmd -f .env.env react-scripts start",
+    "start": "env-cmd -f .env.env react-scripts start",
     "build:staging": "env-cmd -f .env.env react-scripts build",
     "build:production": "env-cmd -f .env.env react-scripts build",
     "test": "react-scripts test",

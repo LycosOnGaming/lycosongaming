@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import TwitterApi from 'twitter-api-v2';
 
 import './Tool.scss';
 
@@ -23,12 +24,14 @@ class Tool extends Component {
 			},
 		});
 
-		let twitterAPI = axios.create({
-			headers: {
-				'Client-ID': process.env.REACT_APP_TWITTER_CLIENT_ID,
-				Authorization: process.env.REACT_APP_TWITTER_AUTH,
-			},
-		});
+		console.log(twitchAPI);
+
+		// let twitterAPI = axios.create({
+		// 	headers: {
+		// 		'Client-ID': process.env.REACT_APP_TWITTER_CLIENT_ID,
+		// 		Authorization: process.env.REACT_APP_TWITTER_AUTH,
+		// 	},
+		// });
 
 		/*
 REACT_APP_TWITTER_CLIENT_ID
@@ -38,14 +41,15 @@ REACT_APP_TWITTER_AUTH
 */
 
 		const fetchData = async () => {
+			/*
 			const result = await twitchAPI.get(
 				'https://api.twitch.tv/helix/streams?user_login=lycosongaming'
 			);
-			/*
-			const result = await twitchAPI.get(
-				'https://api.twitch.tv/helix/streams?user_login=Greeniefiziert'
-			);
 			*/
+			const result = await twitchAPI.get(
+				'https://api.twitch.tv/helix/streams?user_login=Lautschmer'
+			);
+
 			if (result.data.data.length !== 0) {
 				this.setState({
 					twitchData: true,
@@ -63,7 +67,6 @@ REACT_APP_TWITTER_AUTH
 		let myAtts = [];
 		let myhashtags = this.state.game_name.replace(/\s+/g, '');
 		let myPostContent = '';
-		console.log(this.state.twitchData);
 
 		myhashtags = myhashtags.split(':');
 		myAtts.push(
