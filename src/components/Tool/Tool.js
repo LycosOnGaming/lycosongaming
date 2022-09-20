@@ -23,18 +23,22 @@ class Tool extends Component {
 		// 	},
 		// });
 
-		const fetchData = async () => {
-			await axios
-				.post(
-					'https://id.twitch.tv/oauth2/token?client_id=' +
-						process.env.REACT_APP_TWITCH_CLIENT_ID +
-						'&client_secret=' +
-						process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID +
-						'&grant_type=client_credentials'
-				)
-				.then((response) => console.log(response.data));
-		};
-		fetchData();
+		function Live() {
+			const fetchData = async () => {
+				await axios
+					.post(
+						'https://id.twitch.tv/oauth2/token?client_id=' +
+							process.env.REACT_APP_TWITCH_CLIENT_ID +
+							'&client_secret=' +
+							process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID +
+							'&grant_type=client_credentials'
+					)
+					.then((response) => console.log(response.data));
+			};
+			fetchData();
+		}
+
+		Live();
 
 		// const fetchData = async () => {
 		// 	const result = await axios
