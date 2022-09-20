@@ -13,64 +13,54 @@ class Tool extends Component {
 			user_name: '',
 			title: '',
 			game_name: '',
+			access_token: '',
+			token_type: '',
 		};
 	}
 
 	componentDidMount() {
-		// let twitchAPI = axios.create({
-		// 	headers: {
-		// 		'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
-		// 	},
-		// });
+		const fetchData = async () => {
+			const response = await axios.post(
+				'https://id.twitch.tv/oauth2/token?client_id=' +
+					process.env.REACT_APP_TWITCH_CLIENT_ID +
+					'&client_secret=' +
+					process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID +
+					'&grant_type=client_credentials'
+			);
 
-		function Live() {
-			const fetchData = async () => {
-				await axios
-					.post(
-						'https://id.twitch.tv/oauth2/token?client_id=' +
-							process.env.REACT_APP_TWITCH_CLIENT_ID +
-							'&client_secret=' +
-							process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID +
-							'&grant_type=client_credentials'
-					)
-					.then((response) => console.log(response.data));
-			};
-			fetchData();
-		}
+			this.setState({
+				access_token: response.data.access_token,
+				token_type: response.data.token_type,
+			});
 
-		Live();
+			let bearer_token =
+				this.state.token_type[0].toUpperCase() +
+				this.state.token_type.slice(1) +
+				' ' +
+				this.state.access_token;
 
-		// const fetchData = async () => {
-		// 	const result = await axios
-		// 		.post(
-		// 			'https://id.twitch.tv/oauth2/token?client_id=' +
-		// 				process.env.REACT_APP_TWITCH_CLIENT_ID +
-		// 				'&client_secret=' +
-		// 				process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID +
-		// 				'&grant_type=client_credentials'
-		// 		)
-		// 		.then((response) => console.log(response.data));
+			let twitchAPI = axios.create({
+				headers: {
+					'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
+					Authorization: bearer_token,
+				},
+			});
 
-		// 	/*
-		// 	const result = await twitchAPI.get(
-		// 		'https://api.twitch.tv/helix/streams?user_login=lycosongaming'
-		// 	);
-		// 	*/
-		// 	// const result = await twitchAPI.get(
-		// 	// 	'https://api.twitch.tv/helix/streams/metadata?user_login=Lautschmer'
-		// 	// );
+			const result = await twitchAPI.get(
+				'https://api.twitch.tv/helix/streams?user_login=lycosongaming'
+			);
 
-		// 	// if (result.data.data.length !== 0) {
-		// 	// 	this.setState({
-		// 	// 		twitchData: true,
-		// 	// 		user_login: result.data.data[0].user_login,
-		// 	// 		title: result.data.data[0].title,
-		// 	// 		game_name: result.data.data[0].game_name,
-		// 	// 	});
-		// 	// }
-		// };
+			if (result.data.data.length !== 0) {
+				this.setState({
+					twitchData: true,
+					user_login: result.data.data[0].user_login,
+					title: result.data.data[0].title,
+					game_name: result.data.data[0].game_name,
+				});
+			}
+		};
 
-		// fetchData();
+		fetchData();
 	}
 
 	render() {
