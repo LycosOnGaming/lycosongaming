@@ -84,7 +84,14 @@ class Tool extends Component {
 		);
 
 		if (this.state.game_name === 'Just Chatting') {
-			myPostContent += 'Hyper geile rammelbande<br /><br />';
+			if (this.state.user_login === 'lycosongaming') {
+				myPostContent += 'Hyper geile rammelbande<br /><br />';
+			} else {
+				myPostContent +=
+					'Just Chatting mit ' +
+					this.state.user_login +
+					'<br /><br />';
+			}
 		} else {
 			myPostContent +=
 				'Wir zocken ' + this.state.game_name + '<br /><br />';
@@ -98,26 +105,23 @@ class Tool extends Component {
 			myPostContent += '#' + tag + ' ';
 		});
 
-		myPostContent += '#' + this.state.user_login + '<br /><br />';
+		myPostContent += '<br /><br />';
 		myPostContent += 'https://www.twitch.tv/' + this.state.user_login;
 
-		if (this.state.twitchData) {
-			return (
-				<div className="Tool">
-					<div className="row">
-						<div className="col-12">{myPostContent}</div>
-					</div>
+		return (
+			<div className="Tool">
+				<div className="row">
+					<div
+						className="col-12"
+						dangerouslySetInnerHTML={{
+							__html: this.state.twitchData
+								? myPostContent
+								: null,
+						}}
+					></div>
 				</div>
-			);
-		} else {
-			return (
-				<div className="Tool">
-					<div className="row">
-						<div className="col-12"></div>
-					</div>
-				</div>
-			);
-		}
+			</div>
+		);
 	}
 }
 
