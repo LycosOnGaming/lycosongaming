@@ -90,6 +90,8 @@ class Tool extends Component {
 				myPostContent +=
 					'Just Chatting mit ' +
 					this.state.user_login +
+					'<br /><br />' +
+					this.state.title +
 					'<br /><br />';
 			}
 		} else {
