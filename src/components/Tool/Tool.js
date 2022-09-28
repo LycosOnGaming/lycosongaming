@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import TwitterApi from 'twitter-api-v2';
 
 import './Tool.scss';
 
@@ -13,13 +12,15 @@ class Tool extends Component {
 			user_name: '',
 			title: '',
 			game_name: '',
-			access_token: '',
-			token_type: '',
+			access_token_twitch: '',
+			token_type_twitch: '',
+			access_token_twitter: '',
+			token_type_twitter: '',
 		};
 	}
 
 	componentDidMount() {
-		const fetchData = async () => {
+		const fetchTwitchData = async () => {
 			const response = await axios.post(
 				'https://id.twitch.tv/oauth2/token?client_id=' +
 					process.env.REACT_APP_TWITCH_CLIENT_ID +
@@ -29,20 +30,20 @@ class Tool extends Component {
 			);
 
 			this.setState({
-				access_token: response.data.access_token,
-				token_type: response.data.token_type,
+				access_token_twitch: response.data.access_token,
+				token_type_twitch: response.data.token_type,
 			});
 
-			let bearer_token =
-				this.state.token_type[0].toUpperCase() +
-				this.state.token_type.slice(1) +
+			let bearer_token_twitch =
+				this.state.token_type_twitch[0].toUpperCase() +
+				this.state.token_type_twitch.slice(1) +
 				' ' +
-				this.state.access_token;
+				this.state.access_token_twitch;
 
 			let twitchAPI = axios.create({
 				headers: {
 					'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
-					Authorization: bearer_token,
+					Authorization: bearer_token_twitch,
 				},
 			});
 
@@ -60,7 +61,51 @@ class Tool extends Component {
 			}
 		};
 
-		fetchData();
+		fetchTwitchData();
+
+		const fetchTwitterData = async () => {
+			try {
+				const responseTwitter = await axios({
+					method: 'post',
+					url: 'https://api.twitter.com/oauth2/token',
+					params: {
+						client_id: process.env.REACT_APP_TWITTER_CLIENT_ID,
+						client_secret:
+							process.env.REACT_APP_TWITTER_APP_SECRET_KEY,
+						grant_type: 'client_credentials',
+					},
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+				});
+
+				this.setState({
+					access_token_twitter: responseTwitter.data.access_token,
+					token_type_twitter: responseTwitter.data.token_type,
+				});
+
+				let bearer_token_twitter =
+					this.state.token_type_twitter[0].toUpperCase() +
+					this.state.token_type_twitter.slice(1) +
+					' ' +
+					this.state.access_token_twitter;
+
+				let twitchAPI = axios({
+					method: 'get',
+					url: 'https://api.twitter.com/2/users/850084654627598337',
+					headers: {
+						'Client-ID': process.env.REACT_APP_TWITTER_CLIENT_ID,
+						Authorization: bearer_token_twitter,
+					},
+				});
+
+				console.log(twitchAPI);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+
+		fetchTwitterData();
 	}
 
 	render() {
