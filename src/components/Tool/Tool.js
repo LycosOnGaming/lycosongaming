@@ -21,17 +21,23 @@ class Tool extends Component {
 
 	componentDidMount() {
 		const fetchTwitchData = async () => {
-			const response = await axios.post(
-				'https://id.twitch.tv/oauth2/token?client_id=' +
-					process.env.REACT_APP_TWITCH_CLIENT_ID +
-					'&client_secret=' +
-					process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID +
-					'&grant_type=client_credentials'
-			);
+			const responseTwitch = await axios({
+				method: 'post',
+				url: 'https://id.twitch.tv/oauth2/token',
+				params: {
+					client_id: process.env.REACT_APP_TWITCH_CLIENT_ID,
+					client_secret:
+						process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID,
+					grant_type: 'client_credentials',
+				},
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+			});
 
 			this.setState({
-				access_token_twitch: response.data.access_token,
-				token_type_twitch: response.data.token_type,
+				access_token_twitch: responseTwitch.data.access_token,
+				token_type_twitch: responseTwitch.data.token_type,
 			});
 
 			let bearer_token_twitch =
@@ -64,45 +70,42 @@ class Tool extends Component {
 		fetchTwitchData();
 
 		const fetchTwitterData = async () => {
-			try {
-				const responseTwitter = await axios({
-					method: 'post',
-					url: 'https://api.twitter.com/oauth2/token',
-					params: {
-						client_id: process.env.REACT_APP_TWITTER_CLIENT_ID,
-						client_secret:
-							process.env.REACT_APP_TWITTER_APP_SECRET_KEY,
-						grant_type: 'client_credentials',
-					},
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
-					},
-				});
+			const responseTwitter = await axios({
+				method: 'post',
+				url: 'https://api.twitter.com/oauth2/token',
+				params: {
+					client_id: process.env.REACT_APP_TWITTER_CLIENT_ID,
+					client_secret: process.env.REACT_APP_TWITTER_APP_SECRET_KEY,
+					grant_type: 'client_credentials',
+				},
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+			});
 
-				this.setState({
-					access_token_twitter: responseTwitter.data.access_token,
-					token_type_twitter: responseTwitter.data.token_type,
-				});
+			this.setState({
+				access_token_twitter: responseTwitter.data.access_token,
+				token_type_twitter: responseTwitter.data.token_type,
+			});
 
-				let bearer_token_twitter =
-					this.state.token_type_twitter[0].toUpperCase() +
-					this.state.token_type_twitter.slice(1) +
-					' ' +
-					this.state.access_token_twitter;
+			let bearer_token_twitter =
+				this.state.token_type_twitter[0].toUpperCase() +
+				this.state.token_type_twitter.slice(1) +
+				' ' +
+				this.state.access_token_twitter;
 
-				let twitchAPI = axios({
-					method: 'get',
-					url: 'https://api.twitter.com/2/users/850084654627598337',
-					headers: {
-						'Client-ID': process.env.REACT_APP_TWITTER_CLIENT_ID,
-						Authorization: bearer_token_twitter,
-					},
-				});
+			let twitterAPI = axios.create({
+				headers: {
+					'Client-ID': process.env.REACT_APP_TWITTER_CLIENT_ID,
+					Authorization: bearer_token_twitter,
+				},
+			});
 
-				console.log(twitchAPI);
-			} catch (error) {
-				console.log(error);
-			}
+			const result = await twitterAPI.get(
+				'https://api.twitter.com/2/tweets/search/recent?query=from:twitterdev'
+			);
+
+			console.log(result);
 		};
 
 		fetchTwitterData();
