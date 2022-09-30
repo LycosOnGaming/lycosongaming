@@ -102,7 +102,7 @@ class Tool extends Component {
 			});
 
 			const result = await twitterAPI.get(
-				'https://api.twitter.com/2/tweets/search/recent?query=from:twitterdev'
+				'https://api.twitter.com/2/tweets/search/recent'
 			);
 
 			console.log(result);
