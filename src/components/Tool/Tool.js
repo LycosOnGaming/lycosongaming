@@ -3,6 +3,60 @@ import axios from 'axios';
 
 import './Tool.scss';
 
+/*
+function loadEnvironment($pIsInClasses = false) {
+	if ($pIsInClasses) {
+		require_once("crypto.php");
+	} else {
+		require_once("classes/crypto.php");
+	}
+	$myFile = sysEnvironment;
+
+	if (strpos($_SERVER['SERVER_NAME'], 'dev.') !== false) {
+		$myFile = "stage.".$myFile;
+	} else if (strpos($_SERVER['SERVER_NAME'], 'live.') !== false) {
+		$myFile = "live.".$myFile;
+	}
+
+	$myCryptoSignature = "=*=ENCRYPTEDENVFILE=*=";
+
+	for ($i = 0; $i < 3; $i++) {
+		$myFile = "../".$myFile;
+		if (is_readable($myFile)) {
+			break;
+		} else if($i == 2) {
+			throw new RuntimeException(sprintf('%s file is not readable', $myFile));
+		}
+	}
+
+	$myInput = file_get_contents($myFile);
+	$myCryptoSignatureLength = strlen($myCryptoSignature);
+	$isEncrypted = substr($myInput, 0, $myCryptoSignatureLength) === $myCryptoSignature;
+	if ($isEncrypted) {
+		$myInput = substr($myInput, $myCryptoSignatureLength);
+		$myInput = Crypto::decrypt($myInput, ENV_ENCRYPTION_KEY, ENV_ENCRYPTION_HASH_KEY);
+	}
+
+	foreach (preg_split("/((\r?\n)|(\r\n?))/", $myInput) as $line) {
+		$line = trim($line);
+
+		if (strlen($line) === 0 || strpos($line, '#') === 0) {
+			continue;
+		}
+		
+		list($name, $value) = explode('=', $line, 2);
+		$name = trim($name);
+		$value = trim($value);
+		$_ENV[$name] = $value;
+	}
+
+	if (!$isEncrypted && $_ENV['DB_ENVIRONMENT'] != 'dev') {
+		$myEncryptedEnv = $myCryptoSignature.Crypto::encrypt($myInput, ENV_ENCRYPTION_KEY, ENV_ENCRYPTION_HASH_KEY);
+		file_put_contents($myFile, $myEncryptedEnv);
+	}
+}
+*/
+
 class Tool extends Component {
 	constructor(props) {
 		super(props);
