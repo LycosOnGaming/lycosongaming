@@ -55,6 +55,29 @@ function loadEnvironment($pIsInClasses = false) {
 		file_put_contents($myFile, $myEncryptedEnv);
 	}
 }
+
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} =""
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} !^www.lycosongaming.de$
+RewriteRule ^(.*)$ https://www.lycosongaming.de/$1 [R=301,L]
+
+<IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin "*"
+	Header set Access-Control-Allow-Credentials true
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On RewriteBase /
+	RewriteRule ^index\.html$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule . /index.html [L]
+</IfModule>
+
+Header set x-Frame-Options "SAMEORIGIN"
 */
 
 class Tool extends Component {
