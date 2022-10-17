@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import './Tool.scss';
 
@@ -89,7 +90,7 @@ class Tool extends Component {
 			user_name: '',
 			title: '',
 			game_name: '',
-			followerArray: [],
+			unFollowerArray: [],
 			access_token_twitch: '',
 			token_type_twitch: '',
 			access_token_twitter: '',
@@ -140,7 +141,7 @@ class Tool extends Component {
 			let myArray = [];
 
 			const resultFollows = await twitchAPI.get(
-				'https://api.twitch.tv/helix/users/follows?first=100&to_id=' +
+				'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
 					result.data.data[0].id
 			);
 
@@ -159,46 +160,31 @@ class Tool extends Component {
 				pagination = test.data.pagination.cursor;
 			} while (pagination !== undefined);
 
-			let myFollowArray = [];
+			let myUnFollowArray = [];
 
 			myArray.forEach((item) => {
-				setTimeout(() => {
-					item.forEach(async (item2) => {
-						const resultConnection = await twitchAPI.get(
-							'https://api.twitch.tv/helix/users/follows?from_id=' +
-								item2.from_id +
-								'&to_id=' +
-								result.data.data[0].id
-						);
+				item.forEach(async (item2) => {
+					const resultConnection = await twitchAPI.get(
+						'https://api.twitch.tv/helix/users/follows?from_id=' +
+							item2.to_id +
+							'&to_id=' +
+							result.data.data[0].id
+					);
 
-						myFollowArray.push(resultConnection.data.data[0]);
-
-						// if (resultConnection.data.total === 0) {
-						// 	console.log(
-						// 		item2.from_name,
-						// 		' - ',
-						// 		resultConnection.data
-						// 	);
-						// }
-
-						// if (resultConnection.data.total === 1) {
-						// 	console.log(
-						// 		resultConnection.data.data[0].to_login,
-						// 		' - ',
-						// 		resultConnection.data.data[0].from_login
-						// 	);
-						// }
-					});
-				}, 5000);
+					if (resultConnection.data.total === 0) {
+						myUnFollowArray.push({
+							to_name: item2.to_name,
+							to_id: item2.to_id,
+						});
+					}
+				});
 			});
 
-			// const resultConnection = await twitchAPI.get(
-			// 	'https://api.twitch.tv/helix/users/follows?from_id=' +
-			// 		result.data.data[0].id +
-			// 		'&to_id=99444098'
-			// );
-
-			// console.log(resultConnection);
+			setTimeout(() => {
+				this.setState({
+					unFollowerArray: myUnFollowArray,
+				});
+			}, 10000);
 
 			// if (result.data.data.length !== 0) {
 			// 	this.setState({
@@ -208,7 +194,6 @@ class Tool extends Component {
 			// 		game_name: result.data.data[0].game_name,
 			// 	});
 			// }
-			console.log(myFollowArray);
 		};
 
 		fetchTwitchData();
@@ -313,6 +298,23 @@ class Tool extends Component {
 								: null,
 						}}
 					></div>
+					{this.state.unFollowerArray.map((noSupport) => {
+						return (
+							<div key={noSupport.to_id} className="mb-3 col-2">
+								<Link
+									className="nav-link"
+									target="blank"
+									to={{
+										pathname:
+											'https://twitch.tv/' +
+											noSupport.to_name,
+									}}
+								>
+									{noSupport.to_name}
+								</Link>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		);
