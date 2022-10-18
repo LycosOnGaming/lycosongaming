@@ -149,16 +149,18 @@ class Tool extends Component {
 
 			let pagination = resultFollows.data.pagination.cursor;
 
-			do {
-				let test = await twitchAPI.get(
-					'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
-						result.data.data[0].id +
-						'&after=' +
-						pagination
-				);
-				myArray.push(test.data.data);
-				pagination = test.data.pagination.cursor;
-			} while (pagination !== undefined);
+			if (pagination !== undefined) {
+				do {
+					let test = await twitchAPI.get(
+						'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
+							result.data.data[0].id +
+							'&after=' +
+							pagination
+					);
+					myArray.push(test.data.data);
+					pagination = test.data.pagination.cursor;
+				} while (pagination !== undefined);
+			}
 
 			let myUnFollowArray = [];
 
