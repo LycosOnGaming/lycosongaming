@@ -87,6 +87,7 @@ class Tool extends Component {
 
 		this.state = {
 			twitchData: false,
+			user: 'LycosOnGaming',
 			user_name: '',
 			title: '',
 			game_name: '',
@@ -96,6 +97,134 @@ class Tool extends Component {
 			access_token_twitter: '',
 			token_type_twitter: '',
 		};
+
+		// this.getTwitchToken = this.getTwitchToken.bind(this);
+		this.getNoSupporter = this.getNoSupporter.bind(this);
+	}
+
+	// async getTwitchToken() {
+	// 	const responseTwitch = await axios({
+	// 		method: 'post',
+	// 		url: 'https://id.twitch.tv/oauth2/token',
+	// 		params: {
+	// 			client_id: process.env.REACT_APP_TWITCH_CLIENT_ID,
+	// 			client_secret: process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID,
+	// 			grant_type: 'client_credentials',
+	// 		},
+	// 		headers: {
+	// 			'Content-Type': 'application/x-www-form-urlencoded',
+	// 		},
+	// 	});
+
+	// 	this.setState({
+	// 		access_token_twitch: responseTwitch.data.access_token,
+	// 		token_type_twitch: responseTwitch.data.token_type,
+	// 	});
+
+	// 	let bearer_token_twitch =
+	// 		this.state.token_type_twitch[0].toUpperCase() +
+	// 		this.state.token_type_twitch.slice(1) +
+	// 		' ' +
+	// 		this.state.access_token_twitch;
+
+	// 	let twitchAPI = axios.create({
+	// 		headers: {
+	// 			'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
+	// 			Authorization: bearer_token_twitch,
+	// 		},
+	// 	});
+
+	// 	console.log(twitchAPI);
+	// 	return twitchAPI;
+	// }
+
+	async getNoSupporter() {
+		const responseTwitch = await axios({
+			method: 'post',
+			url: 'https://id.twitch.tv/oauth2/token',
+			params: {
+				client_id: process.env.REACT_APP_TWITCH_CLIENT_ID,
+				client_secret: process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID,
+				grant_type: 'client_credentials',
+			},
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+		});
+
+		this.setState({
+			access_token_twitch: responseTwitch.data.access_token,
+			token_type_twitch: responseTwitch.data.token_type,
+		});
+
+		let bearer_token_twitch =
+			this.state.token_type_twitch[0].toUpperCase() +
+			this.state.token_type_twitch.slice(1) +
+			' ' +
+			this.state.access_token_twitch;
+
+		let twitchAPI = axios.create({
+			headers: {
+				'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
+				Authorization: bearer_token_twitch,
+			},
+		});
+
+		const result = await twitchAPI.get(
+			'https://api.twitch.tv/helix/users?login=' + this.state.user
+			// 'https://api.twitch.tv/helix/users/follows?to_id=83207101'
+			// 'https://api.twitch.tv/helix/streams?user_login=' + this.state.user
+		);
+
+		let myArray = [];
+
+		const resultFollows = await twitchAPI.get(
+			'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
+				result.data.data[0].id
+		);
+
+		myArray.push(resultFollows.data.data);
+
+		let pagination = resultFollows.data.pagination.cursor;
+
+		if (pagination !== undefined) {
+			do {
+				let test = await twitchAPI.get(
+					'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
+						result.data.data[0].id +
+						'&after=' +
+						pagination
+				);
+				myArray.push(test.data.data);
+				pagination = test.data.pagination.cursor;
+			} while (pagination !== undefined);
+		}
+
+		let myUnFollowArray = [];
+
+		myArray.forEach((item) => {
+			item.forEach(async (item2) => {
+				const resultConnection = await twitchAPI.get(
+					'https://api.twitch.tv/helix/users/follows?from_id=' +
+						item2.to_id +
+						'&to_id=' +
+						result.data.data[0].id
+				);
+
+				if (resultConnection.data.total === 0) {
+					myUnFollowArray.push({
+						to_name: item2.to_name,
+						to_id: item2.to_id,
+					});
+				}
+			});
+		});
+
+		setTimeout(() => {
+			this.setState({
+				unFollowerArray: myUnFollowArray,
+			});
+		}, 10000);
 	}
 
 	componentDidMount() {
@@ -133,69 +262,18 @@ class Tool extends Component {
 			});
 
 			const result = await twitchAPI.get(
-				'https://api.twitch.tv/helix/users?login=LycosOnGaming'
-				// 'https://api.twitch.tv/helix/users/follows?to_id=83207101'
-				// 'https://api.twitch.tv/helix/streams?user_login=lycosongaming'
+				'https://api.twitch.tv/helix/streams?user_login=' +
+					this.state.user
 			);
 
-			let myArray = [];
-
-			const resultFollows = await twitchAPI.get(
-				'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
-					result.data.data[0].id
-			);
-
-			myArray.push(resultFollows.data.data);
-
-			let pagination = resultFollows.data.pagination.cursor;
-
-			if (pagination !== undefined) {
-				do {
-					let test = await twitchAPI.get(
-						'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
-							result.data.data[0].id +
-							'&after=' +
-							pagination
-					);
-					myArray.push(test.data.data);
-					pagination = test.data.pagination.cursor;
-				} while (pagination !== undefined);
-			}
-
-			let myUnFollowArray = [];
-
-			myArray.forEach((item) => {
-				item.forEach(async (item2) => {
-					const resultConnection = await twitchAPI.get(
-						'https://api.twitch.tv/helix/users/follows?from_id=' +
-							item2.to_id +
-							'&to_id=' +
-							result.data.data[0].id
-					);
-
-					if (resultConnection.data.total === 0) {
-						myUnFollowArray.push({
-							to_name: item2.to_name,
-							to_id: item2.to_id,
-						});
-					}
-				});
-			});
-
-			setTimeout(() => {
+			if (result.data.data.length !== 0) {
 				this.setState({
-					unFollowerArray: myUnFollowArray,
+					twitchData: true,
+					user_login: result.data.data[0].user_login,
+					title: result.data.data[0].title,
+					game_name: result.data.data[0].game_name,
 				});
-			}, 10000);
-
-			// if (result.data.data.length !== 0) {
-			// 	this.setState({
-			// 		twitchData: true,
-			// 		user_login: result.data.data[0].user_login,
-			// 		title: result.data.data[0].title,
-			// 		game_name: result.data.data[0].game_name,
-			// 	});
-			// }
+			}
 		};
 
 		fetchTwitchData();
@@ -300,9 +378,16 @@ class Tool extends Component {
 								: null,
 						}}
 					></div>
+				</div>
+				<div className="row">
+					<div className="col-12">
+						<button onClick={this.getNoSupporter}>Laden</button>
+					</div>
+				</div>
+				<div className="row">
 					{this.state.unFollowerArray.map((noSupport) => {
 						return (
-							<div key={noSupport.to_id} className="mb-3 col-2">
+							<div key={noSupport.to_id} className="mb-3 col-3">
 								<Link
 									className="nav-link"
 									target="blank"
