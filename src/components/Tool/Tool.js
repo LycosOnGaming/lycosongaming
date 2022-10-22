@@ -98,47 +98,13 @@ class Tool extends Component {
 			token_type_twitter: '',
 		};
 
-		// this.getTwitchToken = this.getTwitchToken.bind(this);
+		this.getTwitchToken = this.getTwitchToken.bind(this);
 		this.getNoSupporter = this.getNoSupporter.bind(this);
+
+		this.getTwitterToken = this.getTwitterToken.bind(this);
 	}
 
-	// async getTwitchToken() {
-	// 	const responseTwitch = await axios({
-	// 		method: 'post',
-	// 		url: 'https://id.twitch.tv/oauth2/token',
-	// 		params: {
-	// 			client_id: process.env.REACT_APP_TWITCH_CLIENT_ID,
-	// 			client_secret: process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID,
-	// 			grant_type: 'client_credentials',
-	// 		},
-	// 		headers: {
-	// 			'Content-Type': 'application/x-www-form-urlencoded',
-	// 		},
-	// 	});
-
-	// 	this.setState({
-	// 		access_token_twitch: responseTwitch.data.access_token,
-	// 		token_type_twitch: responseTwitch.data.token_type,
-	// 	});
-
-	// 	let bearer_token_twitch =
-	// 		this.state.token_type_twitch[0].toUpperCase() +
-	// 		this.state.token_type_twitch.slice(1) +
-	// 		' ' +
-	// 		this.state.access_token_twitch;
-
-	// 	let twitchAPI = axios.create({
-	// 		headers: {
-	// 			'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
-	// 			Authorization: bearer_token_twitch,
-	// 		},
-	// 	});
-
-	// 	console.log(twitchAPI);
-	// 	return twitchAPI;
-	// }
-
-	async getNoSupporter() {
+	async getTwitchToken() {
 		const responseTwitch = await axios({
 			method: 'post',
 			url: 'https://id.twitch.tv/oauth2/token',
@@ -170,154 +136,136 @@ class Tool extends Component {
 			},
 		});
 
-		const result = await twitchAPI.get(
-			'https://api.twitch.tv/helix/users?login=' + this.state.user
-			// 'https://api.twitch.tv/helix/users/follows?to_id=83207101'
-			// 'https://api.twitch.tv/helix/streams?user_login=' + this.state.user
-		);
+		return twitchAPI;
+	}
 
-		let myArray = [];
+	async getNoSupporter() {
+		this.getTwitchToken().then(async (data) => {
+			const result = await data.get(
+				'https://api.twitch.tv/helix/users?login=' + this.state.user
+				// 'https://api.twitch.tv/helix/users/follows?to_id=83207101'
+				// 'https://api.twitch.tv/helix/streams?user_login=' + this.state.user
+			);
 
-		const resultFollows = await twitchAPI.get(
-			'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
-				result.data.data[0].id
-		);
+			let myArray = [];
 
-		myArray.push(resultFollows.data.data);
+			const resultFollows = await data.get(
+				'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
+					result.data.data[0].id
+			);
 
-		let pagination = resultFollows.data.pagination.cursor;
+			myArray.push(resultFollows.data.data);
 
-		if (pagination !== undefined) {
-			do {
-				let test = await twitchAPI.get(
-					'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
-						result.data.data[0].id +
-						'&after=' +
-						pagination
-				);
-				myArray.push(test.data.data);
-				pagination = test.data.pagination.cursor;
-			} while (pagination !== undefined);
-		}
+			let pagination = resultFollows.data.pagination.cursor;
 
-		let myUnFollowArray = [];
+			if (pagination !== undefined) {
+				do {
+					let test = await data.get(
+						'https://api.twitch.tv/helix/users/follows?first=100&from_id=' +
+							result.data.data[0].id +
+							'&after=' +
+							pagination
+					);
+					myArray.push(test.data.data);
+					pagination = test.data.pagination.cursor;
+				} while (pagination !== undefined);
+			}
 
-		myArray.forEach((item) => {
-			item.forEach(async (item2) => {
-				const resultConnection = await twitchAPI.get(
-					'https://api.twitch.tv/helix/users/follows?from_id=' +
-						item2.to_id +
-						'&to_id=' +
-						result.data.data[0].id
-				);
+			let myUnFollowArray = [];
 
-				if (resultConnection.data.total === 0) {
-					myUnFollowArray.push({
-						to_name: item2.to_name,
-						to_id: item2.to_id,
-					});
-				}
+			myArray.forEach((item) => {
+				item.forEach(async (item2) => {
+					const resultConnection = await data.get(
+						'https://api.twitch.tv/helix/users/follows?from_id=' +
+							item2.to_id +
+							'&to_id=' +
+							result.data.data[0].id
+					);
+
+					if (resultConnection.data.total === 0) {
+						myUnFollowArray.push({
+							to_name: item2.to_name,
+							to_id: item2.to_id,
+						});
+					}
+				});
 			});
+
+			setTimeout(() => {
+				this.setState({
+					unFollowerArray: myUnFollowArray,
+				});
+			}, 10000);
+		});
+	}
+
+	async getTwitterToken() {
+		const responseTwitter = await axios({
+			method: 'post',
+			url: 'https://api.twitter.com/oauth2/token',
+			params: {
+				client_id: process.env.REACT_APP_TWITTER_CLIENT_ID,
+				client_secret: process.env.REACT_APP_TWITTER_APP_SECRET_KEY,
+				grant_type: 'client_credentials',
+			},
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
 		});
 
-		setTimeout(() => {
-			this.setState({
-				unFollowerArray: myUnFollowArray,
-			});
-		}, 10000);
+		this.setState({
+			access_token_twitter: responseTwitter.data.access_token,
+			token_type_twitter: responseTwitter.data.token_type,
+		});
+
+		let bearer_token_twitter =
+			this.state.token_type_twitter[0].toUpperCase() +
+			this.state.token_type_twitter.slice(1) +
+			' ' +
+			this.state.access_token_twitter;
+
+		let twitterAPI = axios.create({
+			headers: {
+				'Client-ID': process.env.REACT_APP_TWITTER_CLIENT_ID,
+				Authorization: bearer_token_twitter,
+			},
+		});
+
+		return twitterAPI;
 	}
 
 	componentDidMount() {
 		const fetchTwitchData = async () => {
-			const responseTwitch = await axios({
-				method: 'post',
-				url: 'https://id.twitch.tv/oauth2/token',
-				params: {
-					client_id: process.env.REACT_APP_TWITCH_CLIENT_ID,
-					client_secret:
-						process.env.REACT_APP_TWITCH_SECRET_CLIENT_ID,
-					grant_type: 'client_credentials',
-				},
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-				},
+			this.getTwitchToken().then(async (data) => {
+				const result = await data.get(
+					'https://api.twitch.tv/helix/streams?user_login=' +
+						this.state.user
+				);
+
+				if (result.data.data.length !== 0) {
+					this.setState({
+						twitchData: true,
+						user_login: result.data.data[0].user_login,
+						title: result.data.data[0].title,
+						game_name: result.data.data[0].game_name,
+					});
+				}
 			});
-
-			this.setState({
-				access_token_twitch: responseTwitch.data.access_token,
-				token_type_twitch: responseTwitch.data.token_type,
-			});
-
-			let bearer_token_twitch =
-				this.state.token_type_twitch[0].toUpperCase() +
-				this.state.token_type_twitch.slice(1) +
-				' ' +
-				this.state.access_token_twitch;
-
-			let twitchAPI = axios.create({
-				headers: {
-					'Client-ID': process.env.REACT_APP_TWITCH_CLIENT_ID,
-					Authorization: bearer_token_twitch,
-				},
-			});
-
-			const result = await twitchAPI.get(
-				'https://api.twitch.tv/helix/streams?user_login=' +
-					this.state.user
-			);
-
-			if (result.data.data.length !== 0) {
-				this.setState({
-					twitchData: true,
-					user_login: result.data.data[0].user_login,
-					title: result.data.data[0].title,
-					game_name: result.data.data[0].game_name,
-				});
-			}
 		};
 
 		fetchTwitchData();
 
-		// const fetchTwitterData = async () => {
-		// 	const responseTwitter = await axios({
-		// 		method: 'post',
-		// 		url: 'https://api.twitter.com/oauth2/token',
-		// 		params: {
-		// 			client_id: process.env.REACT_APP_TWITTER_CLIENT_ID,
-		// 			client_secret: process.env.REACT_APP_TWITTER_APP_SECRET_KEY,
-		// 			grant_type: 'client_credentials',
-		// 		},
-		// 		headers: {
-		// 			'Content-Type': 'application/x-www-form-urlencoded',
-		// 		},
-		// 	});
+		const fetchTwitterData = async () => {
+			this.getTwitterToken().then(async (data) => {
+				const result = await data.get(
+					'https://api.twitter.com/2/tweets/search/recent'
+				);
 
-		// 	this.setState({
-		// 		access_token_twitter: responseTwitter.data.access_token,
-		// 		token_type_twitter: responseTwitter.data.token_type,
-		// 	});
+				console.log(result);
+			});
+		};
 
-		// 	let bearer_token_twitter =
-		// 		this.state.token_type_twitter[0].toUpperCase() +
-		// 		this.state.token_type_twitter.slice(1) +
-		// 		' ' +
-		// 		this.state.access_token_twitter;
-
-		// 	let twitterAPI = axios.create({
-		// 		headers: {
-		// 			'Client-ID': process.env.REACT_APP_TWITTER_CLIENT_ID,
-		// 			Authorization: bearer_token_twitter,
-		// 		},
-		// 	});
-
-		// 	const result = await twitterAPI.get(
-		// 		'https://api.twitter.com/2/tweets/search/recent'
-		// 	);
-
-		// 	console.log(result);
-		// };
-
-		// fetchTwitterData();
+		fetchTwitterData();
 	}
 
 	render() {
