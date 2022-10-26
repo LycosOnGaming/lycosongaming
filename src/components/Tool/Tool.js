@@ -87,7 +87,8 @@ class Tool extends Component {
 
 		this.state = {
 			twitchData: false,
-			user: 'LycosOnGaming',
+			user: '',
+			value: '',
 			user_name: '',
 			title: '',
 			game_name: '',
@@ -98,10 +99,46 @@ class Tool extends Component {
 			token_type_twitter: '',
 		};
 
+		this.loadStreamer = this.loadStreamer.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+
 		this.getTwitchToken = this.getTwitchToken.bind(this);
 		this.getNoSupporter = this.getNoSupporter.bind(this);
 
 		this.getTwitterToken = this.getTwitterToken.bind(this);
+	}
+
+	handleChange(event) {
+		this.setState({ value: event.target.value });
+	}
+
+	loadStreamer(event) {
+		this.setState({ user: this.state.value });
+		event.preventDefault();
+
+		const fetchTwitchData = async () => {
+			this.getTwitchToken().then(async (data) => {
+				const result = await data.get(
+					'https://api.twitch.tv/helix/streams?user_login=' +
+						this.state.user
+				);
+
+				if (result.data.data.length !== 0) {
+					this.setState({
+						twitchData: true,
+						user_login: result.data.data[0].user_login,
+						title: result.data.data[0].title,
+						game_name: result.data.data[0].game_name,
+					});
+				} else {
+					this.setState({
+						twitchData: false,
+					});
+				}
+			});
+		};
+
+		fetchTwitchData();
 	}
 
 	async getTwitchToken() {
@@ -235,37 +272,32 @@ class Tool extends Component {
 	}
 
 	componentDidMount() {
-		const fetchTwitchData = async () => {
-			this.getTwitchToken().then(async (data) => {
-				const result = await data.get(
-					'https://api.twitch.tv/helix/streams?user_login=' +
-						this.state.user
-				);
-
-				if (result.data.data.length !== 0) {
-					this.setState({
-						twitchData: true,
-						user_login: result.data.data[0].user_login,
-						title: result.data.data[0].title,
-						game_name: result.data.data[0].game_name,
-					});
-				}
-			});
-		};
-
-		fetchTwitchData();
-
-		const fetchTwitterData = async () => {
-			this.getTwitterToken().then(async (data) => {
-				const result = await data.get(
-					'https://api.twitter.com/2/tweets/search/recent'
-				);
-
-				console.log(result);
-			});
-		};
-
-		fetchTwitterData();
+		// const fetchTwitchData = async () => {
+		// 	this.getTwitchToken().then(async (data) => {
+		// 		const result = await data.get(
+		// 			'https://api.twitch.tv/helix/streams?user_login=' +
+		// 				this.state.user
+		// 		);
+		// 		if (result.data.data.length !== 0) {
+		// 			this.setState({
+		// 				twitchData: true,
+		// 				user_login: result.data.data[0].user_login,
+		// 				title: result.data.data[0].title,
+		// 				game_name: result.data.data[0].game_name,
+		// 			});
+		// 		}
+		// 	});
+		// };
+		// fetchTwitchData();
+		// const fetchTwitterData = async () => {
+		// 	this.getTwitterToken().then(async (data) => {
+		// 		const result = await data.get(
+		// 			'https://api.twitter.com/2/tweets/search/recent'
+		// 		);
+		// 		console.log(result);
+		// 	});
+		// };
+		// fetchTwitterData();
 	}
 
 	render() {
@@ -318,39 +350,69 @@ class Tool extends Component {
 		return (
 			<div className="Tool">
 				<div className="row">
+					<div className="col-12">
+						<div className="row">
+							<div className="col-1">Streamer:</div>
+							<div className="col-11">
+								<form onSubmit={this.loadStreamer}>
+									<input
+										type="text"
+										value={this.state.value}
+										onChange={this.handleChange}
+									/>
+									<input type="submit" value="Submit" />
+								</form>
+							</div>
+						</div>
+					</div>
 					<div
-						className="col-12"
+						className="col-12 my-3 pb-3 borderBottom"
 						dangerouslySetInnerHTML={{
 							__html: this.state.twitchData
 								? myPostContent
-								: null,
+								: 'Der Streamer ist nicht Live!',
 						}}
 					></div>
 				</div>
-				<div className="row">
-					<div className="col-12">
-						<button onClick={this.getNoSupporter}>Laden</button>
-					</div>
-				</div>
-				<div className="row">
-					{this.state.unFollowerArray.map((noSupport) => {
-						return (
-							<div key={noSupport.to_id} className="mb-3 col-3">
-								<Link
-									className="nav-link"
-									target="blank"
-									to={{
-										pathname:
-											'https://twitch.tv/' +
-											noSupport.to_name,
-									}}
-								>
-									{noSupport.to_name}
-								</Link>
+				{this.state.user !== '' ? (
+					<>
+						<div className="row">
+							<div className="col-12">
+								{this.state.user} geladen.
 							</div>
-						);
-					})}
-				</div>
+							<div className="col-12 my-3">
+								Wer Supportet nicht zurueck.
+							</div>
+							<div className="col-12">
+								<button onClick={this.getNoSupporter}>
+									Nicht Supporter Laden
+								</button>
+							</div>
+						</div>
+						<div className="row mt-3">
+							{this.state.unFollowerArray.map((noSupport) => {
+								return (
+									<div
+										key={noSupport.to_id}
+										className="mb-3 col-3"
+									>
+										<Link
+											className="nav-link"
+											target="blank"
+											to={{
+												pathname:
+													'https://twitch.tv/' +
+													noSupport.to_name,
+											}}
+										>
+											{noSupport.to_name}
+										</Link>
+									</div>
+								);
+							})}
+						</div>
+					</>
+				) : null}
 			</div>
 		);
 	}
