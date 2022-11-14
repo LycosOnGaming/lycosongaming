@@ -25,6 +25,12 @@
       "src": "/reviews"
     },
     {
+      "title": "Designer",
+      "icon": "fa fa-paint-brush",
+      "target": "_blank",
+      "src": "/designer"
+    },
+    {
       "title": "Bunny Merch",
       "icon": "fa fa-shopping-cart",
       "target": "_blank",
