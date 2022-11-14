@@ -12,17 +12,15 @@ class Designer extends Component {
 		};
 	}
 
-	componentDidMount() {}
-
-	onMouseEnterHandler = (selected) => {
+	onMouseEnterHandler = () => {
 		this.setState({
-			isHover: selected,
+			isHover: true,
 		});
 	};
 
-	onMouseLeaveHandler = (selected) => {
+	onMouseLeaveHandler = () => {
 		this.setState({
-			isHover: !selected,
+			isHover: false,
 		});
 	};
 
@@ -35,7 +33,11 @@ class Designer extends Component {
 					</div>
 					<div className="col-12 text-center">
 						<img
-							className="w-25"
+							className={
+								this.state.isHover
+									? 'w-25 cartoon-logo'
+									: 'w-25 logo'
+							}
 							src={Shorlock}
 							onMouseEnter={() => this.onMouseEnterHandler()}
 							onMouseLeave={() => this.onMouseLeaveHandler()}
