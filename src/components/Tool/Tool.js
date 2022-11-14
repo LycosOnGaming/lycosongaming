@@ -118,7 +118,7 @@ class Tool extends Component {
 
 		const fetchTwitchData = async () => {
 			this.getTwitchToken().then(async (data) => {
-				const result = await data.get(
+				let result = await data.get(
 					'https://api.twitch.tv/helix/streams?user_login=' +
 						this.state.user
 				);
@@ -131,8 +131,16 @@ class Tool extends Component {
 						game_name: result.data.data[0].game_name,
 					});
 				} else {
+					result = await data.get(
+						'https://api.twitch.tv/helix/users?login=' +
+							this.state.user
+					);
+
 					this.setState({
-						twitchData: false,
+						twitchData: true,
+						user_login: result.data.data[0].display_name,
+						title: result.data.data[0].description,
+						game_name: result.data.data[0].description,
 					});
 				}
 			});
