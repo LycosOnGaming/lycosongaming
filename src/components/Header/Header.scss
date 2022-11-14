@@ -1,6 +1,10 @@
 .Header {
-    img {
-        width: 100%;
-        max-height: 200px;
-    }
+	.logo {
+		z-index: 1;
+	}
+
+	.banner {
+		width: 100%;
+		max-height: 200px;
+	}
 }
