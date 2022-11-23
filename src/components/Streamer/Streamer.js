@@ -42,68 +42,76 @@ class Streamer extends Component {
 					</div>
 					<div className="col-12">
 						<div className="Streamer-wrapper">
-							{this.state.streamer.map((streamer) => {
-								if (streamer.streampartner_Img !== '') {
-									return (
-										<div
-											key={streamer.streampartner_Gamer}
-											className="mb-3"
-										>
-											<h4>
-												{streamer.streampartner_Gamer}
-											</h4>
-											<div className="dropdown">
-												<img
-													src={
-														streamer.streampartner_Img
+							<div className="row justify-content-center">
+								{this.state.streamer.map((streamer) => {
+									if (streamer.streampartner_Img !== '') {
+										return (
+											<div
+												key={
+													streamer.streampartner_Gamer
+												}
+												className="col-12 col-lg-3 mb-3"
+											>
+												<h4>
+													{
+														streamer.streampartner_Gamer
 													}
-													onMouseEnter={() =>
-														this.onMouseEnterHandler(
-															streamer
-														)
-													}
-													onMouseLeave={() =>
-														this.onMouseLeaveHandler(
-															streamer
-														)
-													}
-													onClick={(e) => {
-														e.preventDefault();
-														window.open(
-															streamer.streampartner_Url,
-															'_blank'
-														);
-													}}
-													alt=""
-													title={
-														streamer.streampartner_AltText
-													}
-												/>
-												<div
-													className="dropdown-content"
-													style={{
-														display:
-															this.state.isHover
-																.streampartner_ID ===
-															streamer.streampartner_ID
-																? 'block'
-																: 'none',
-													}}
-												>
-													<div
-														className="desc"
-														dangerouslySetInnerHTML={{
-															__html: streamer.streampartner_Description,
+												</h4>
+												<div className="dropdown">
+													<img
+														className="w-50"
+														src={
+															streamer.streampartner_Img
+														}
+														onMouseEnter={() =>
+															this.onMouseEnterHandler(
+																streamer
+															)
+														}
+														onMouseLeave={() =>
+															this.onMouseLeaveHandler(
+																streamer
+															)
+														}
+														onClick={(e) => {
+															e.preventDefault();
+															window.open(
+																streamer.streampartner_Url,
+																'_blank'
+															);
 														}}
+														alt=""
+														title={
+															streamer.streampartner_AltText
+														}
 													/>
+													<div
+														className="dropdown-content"
+														style={{
+															display:
+																this.state
+																	.isHover
+																	.streampartner_ID ===
+																streamer.streampartner_ID
+																	? 'block'
+																	: 'none',
+														}}
+													>
+														<div
+															className="desc"
+															dangerouslySetInnerHTML={{
+																__html: streamer.streampartner_Description,
+															}}
+														/>
+													</div>
 												</div>
 											</div>
-										</div>
-									);
-								} else {
-									return null;
-								}
-							})}
+										);
+									} else {
+										return null;
+									}
+								})}
+							</div>
 						</div>
 					</div>
 				</div>
