@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import ScrollToTop from 'react-router-scroll-top';
 import Admin from './components/Admin/Admin';
 import AddNewStreamer from './components/AddNewStreamer/AddNewStreamer';
+import AddCustomer from './components/AddCustomer/AddCustomer';
+import AddOrUpdateCustomer from './components/AddOrUpdateCustomer/AddOrUpdateCustomer';
 import Header from './components/Header/Header';
 import FixedNavigation from './components/Navigation/Navigation';
 import Landingpage from './components/Landingpage/Landingpage';
@@ -51,6 +53,14 @@ ReactDOM.render(
 							<Route
 								path="/addNewStreamer"
 								component={AddNewStreamer}
+							/>
+							<Route
+								path="/AddCustomer"
+								component={AddCustomer}
+							/>
+							<Route
+								path="/AddOrUpdateCustomer"
+								component={AddOrUpdateCustomer}
 							/>
 							<Route
 								path="/datenschutz"
