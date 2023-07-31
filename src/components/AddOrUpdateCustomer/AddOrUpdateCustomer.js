@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './AddOrUpdateCustomer.scss';
@@ -7,8 +8,10 @@ class AddOrUpdateCustomer extends Component {
 	constructor(props) {
 		super(props);
 
+		const queryParameters = new URLSearchParams(window.location.search);
+
 		this.state = {
-			customerid: '',
+			customerid: queryParameters.get('drkcustomer'),
 			firstname: '',
 			lastname: '',
 			street: '',
@@ -53,46 +56,39 @@ class AddOrUpdateCustomer extends Component {
 	};
 
 	componentDidMount() {
-		axios
-			.get('https://www.lycosongaming.de/api/drkcustomer/')
-			.then(({ data }) => {
-				this.setState({
-					customerid: data.drkcustomer_ID,
-					firstname: data.drkcustomer_Firstname,
-					lastname: data.drkcustomer_Lastname,
-					street: data.drkcustomer_Street,
-					streetno: data.drkcustomer_StreetNo,
-					zipcode: data.drkcustomer_ZipCode,
-					place: data.drkcustomer_Place,
-					distance: data.drkcustomer_Distance,
-					distancetime: data.drkcustomer_DistanceTime,
+		if (this.state.customerid !== null) {
+			axios
+				.get(
+					'https://www.lycosongaming.de/api/drkcustomer/index.php?customerid=' +
+						this.state.customerid
+				)
+				.then(({ data }) => {
+					this.setState({
+						customerid: data[0].drkcustomer_ID,
+						firstname: data[0].drkcustomer_Firstname,
+						lastname: data[0].drkcustomer_Lastname,
+						street: data[0].drkcustomer_Street,
+						streetno: data[0].drkcustomer_StreetNo,
+						zipcode: data[0].drkcustomer_ZipCode,
+						place: data[0].drkcustomer_Place,
+						distance: data[0].drkcustomer_Distance,
+						distancetime: data[0].drkcustomer_DistanceTime,
+					});
 				});
-			});
+		}
 	}
 
 	render() {
-		const {
-			customerid,
-			firstname,
-			lastname,
-			street,
-			streetno,
-			zipcode,
-			place,
-			distance,
-			distancetime,
-		} = this.state;
-
 		return (
 			<div className="AddOrUpdateCustomer">
-				<div key={customerid} className="col-lg-12">
+				<div key={this.state.customerid} className="col-lg-12">
 					<form>
 						<div className="row">
 							<div className="col-6">
 								<label value="firstname">Vorname</label>
 								<input
 									name="firstname"
-									value={firstname}
+									value={this.state.firstname}
 									type="text"
 									onChange={this.handleChange}
 								/>
@@ -101,7 +97,7 @@ class AddOrUpdateCustomer extends Component {
 								<label value="lastname">Nachname</label>
 								<input
 									name="lastname"
-									value={lastname}
+									value={this.state.lastname}
 									type="text"
 									onChange={this.handleChange}
 								/>
@@ -110,7 +106,7 @@ class AddOrUpdateCustomer extends Component {
 								<label value="street">Strasse</label>
 								<input
 									name="street"
-									value={street}
+									value={this.state.street}
 									type="text"
 									onChange={this.handleChange}
 								/>
@@ -119,7 +115,7 @@ class AddOrUpdateCustomer extends Component {
 								<label value="streetno">Hausnummer</label>
 								<input
 									name="streetno"
-									value={streetno}
+									value={this.state.streetno}
 									type="text"
 									onChange={this.handleChange}
 								/>
@@ -128,7 +124,7 @@ class AddOrUpdateCustomer extends Component {
 								<label value="zipcode">Postleitzahl</label>
 								<input
 									name="zipcode"
-									value={zipcode}
+									value={this.state.zipcode}
 									type="text"
 									onChange={this.handleChange}
 								/>
@@ -137,7 +133,7 @@ class AddOrUpdateCustomer extends Component {
 								<label value="place">Ort</label>
 								<input
 									name="place"
-									value={place}
+									value={this.state.place}
 									type="text"
 									onChange={this.handleChange}
 								/>
@@ -146,7 +142,7 @@ class AddOrUpdateCustomer extends Component {
 								<label value="distance">Kilometer</label>
 								<input
 									name="distance"
-									value={distance}
+									value={this.state.distance}
 									type="text"
 									onChange={this.handleChange}
 								/>
@@ -155,17 +151,28 @@ class AddOrUpdateCustomer extends Component {
 								<label value="distancetime">Anfahrtszeit</label>
 								<input
 									name="distancetime"
-									value={distancetime}
+									value={this.state.distancetime}
 									type="text"
 									onChange={this.handleChange}
 								/>
 							</div>
 						</div>
-						<button type="submit" onClick={this.handleSubmit}>
+						<button
+							className="mt-3"
+							type="submit"
+							onClick={this.handleSubmit}
+						>
 							Speichern
 						</button>
 					</form>
 				</div>
+				<Link
+					to={{
+						pathname: `/AddCustomer`,
+					}}
+				>
+					Back
+				</Link>
 			</div>
 		);
 	}
