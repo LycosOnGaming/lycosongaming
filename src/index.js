@@ -6,6 +6,7 @@ import Admin from './components/Admin/Admin';
 import AddNewStreamer from './components/AddNewStreamer/AddNewStreamer';
 import AddCustomer from './components/AddCustomer/AddCustomer';
 import AddOrUpdateCustomer from './components/AddOrUpdateCustomer/AddOrUpdateCustomer';
+import AddBooking from './components/AddBooking/AddBooking';
 import Header from './components/Header/Header';
 import FixedNavigation from './components/Navigation/Navigation';
 import Landingpage from './components/Landingpage/Landingpage';
@@ -58,6 +59,7 @@ ReactDOM.render(
 								path="/AddCustomer"
 								component={AddCustomer}
 							/>
+							<Route path="/AddBooking" component={AddBooking} />
 							<Route
 								path="/AddOrUpdateCustomer"
 								component={AddOrUpdateCustomer}

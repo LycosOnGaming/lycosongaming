@@ -42,6 +42,20 @@ class AddCustomer extends Component {
 						<div key={customer.drkcustomer_ID}>
 							<Link
 								to={{
+									pathname: `/AddBooking?drkcustomer=${customer.drkcustomer_ID}`,
+								}}
+								onClick={() => {
+									window.location.href =
+										'/AddBooking?drkcustomer=' +
+										customer.drkcustomer_ID +
+										'';
+								}}
+							>
+								{customer.drkcustomer_Firstname}{' '}
+								{customer.drkcustomer_Lastname}
+							</Link>
+							<Link
+								to={{
 									pathname: `/AddOrUpdateCustomer?drkcustomer=${customer.drkcustomer_ID}`,
 								}}
 								onClick={() => {
@@ -51,8 +65,7 @@ class AddCustomer extends Component {
 										'';
 								}}
 							>
-								{customer.drkcustomer_Firstname}{' '}
-								{customer.drkcustomer_Lastname}
+								Editieren
 							</Link>
 						</div>
 					);
