@@ -12,7 +12,13 @@ class AddBooking extends Component {
 
 		this.state = {
 			customerid: queryParameters.get('drkcustomer'),
-			description: '',
+			firstname: '',
+			lastname: '',
+			cleaning: '',
+			sucking: '',
+			careing: '',
+			shopping: '',
+			garbage: '',
 			date: '',
 			timestart: '',
 			timeend: '',
@@ -23,7 +29,11 @@ class AddBooking extends Component {
 		e.preventDefault();
 		const data = {
 			customerid: this.state.customerid,
-			description: this.state.description,
+			cleaning: this.state.cleaning,
+			sucking: this.state.sucking,
+			careing: this.state.careing,
+			shopping: this.state.shopping,
+			garbage: this.state.garbage,
 			date: this.state.date,
 			timestart: this.state.timestart,
 			timeend: this.state.timeend,
@@ -43,9 +53,27 @@ class AddBooking extends Component {
 	};
 
 	handleChange = (event) => {
+		console.log(event.target);
 		const { name, value } = event.target;
 		this.setState({ [name]: value });
 	};
+
+	componentDidMount() {
+		if (this.state.customerid !== null) {
+			axios
+				.get(
+					'https://www.lycosongaming.de/api/drkcustomer/index.php?customerid=' +
+						this.state.customerid
+				)
+				.then(({ data }) => {
+					this.setState({
+						customerid: data[0].drkcustomer_ID,
+						firstname: data[0].drkcustomer_Firstname,
+						lastname: data[0].drkcustomer_Lastname,
+					});
+				});
+		}
+	}
 
 	render() {
 		return (
@@ -55,17 +83,47 @@ class AddBooking extends Component {
 						<div className="row">
 							<div className="col-6">
 								<label value="customerid">
-									Kunde {this.state.customerid}
+									Kunde {this.state.firstname}{' '}
+									{this.state.lastname}
 								</label>
 							</div>
 							<div className="col-6">
 								<label value="description">
 									Unterstuetzung
 								</label>
+								<label value="sucking">Staubsaugen</label>
 								<input
-									name="description"
-									value={this.state.description}
-									type="select"
+									name="sucking"
+									value="Staubsaugen"
+									type="checkbox"
+									onChange={this.handleChange}
+								/>
+								<label value="cleaning">Putzen</label>
+								<input
+									name="cleaning"
+									value="Putzen"
+									type="checkbox"
+									onChange={this.handleChange}
+								/>
+								<label value="shopping">Einkaufen</label>
+								<input
+									name="shopping"
+									value="Einkaufen"
+									type="checkbox"
+									onChange={this.handleChange}
+								/>
+								<label value="careing">Betreuung</label>
+								<input
+									name="careing"
+									value="Betreuung"
+									type="checkbox"
+									onChange={this.handleChange}
+								/>
+								<label value="garbage">Tonnen im Monat</label>
+								<input
+									name="garbage"
+									value="Abfalltonnen ganzer Monat"
+									type="checkbox"
 									onChange={this.handleChange}
 								/>
 							</div>
