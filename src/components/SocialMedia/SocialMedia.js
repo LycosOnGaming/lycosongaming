@@ -52,6 +52,11 @@ class SocialMedia extends Component {
 							<img src={Twitter} alt="twitter" />
 						</Link>
 					</div>
+					{/* <div className="col-lg-12 col-md-12 mb-4 mb-lg-6 text-center">
+						<Link to="//discord.gg/THERwGz" target="_blank">
+							<img src={Discord} alt="discord" />
+						</Link>
+					</div> */}
 				</div>
 			</div>
 		);
