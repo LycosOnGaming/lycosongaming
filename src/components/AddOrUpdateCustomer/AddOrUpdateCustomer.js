@@ -80,11 +80,11 @@ class AddOrUpdateCustomer extends Component {
 
 	render() {
 		return (
-			<div className="AddOrUpdateCustomer">
-				<div key={this.state.customerid} className="col-lg-12">
+			<div className="AddOrUpdateCustomer row">
+				<div key={this.state.customerid} className="col-12">
 					<form>
 						<div className="row">
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="firstname">Vorname</label>
 								<input
 									name="firstname"
@@ -93,7 +93,7 @@ class AddOrUpdateCustomer extends Component {
 									onChange={this.handleChange}
 								/>
 							</div>
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="lastname">Nachname</label>
 								<input
 									name="lastname"
@@ -102,7 +102,7 @@ class AddOrUpdateCustomer extends Component {
 									onChange={this.handleChange}
 								/>
 							</div>
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="street">Strasse</label>
 								<input
 									name="street"
@@ -111,7 +111,7 @@ class AddOrUpdateCustomer extends Component {
 									onChange={this.handleChange}
 								/>
 							</div>
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="streetno">Hausnummer</label>
 								<input
 									name="streetno"
@@ -120,7 +120,7 @@ class AddOrUpdateCustomer extends Component {
 									onChange={this.handleChange}
 								/>
 							</div>
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="zipcode">Postleitzahl</label>
 								<input
 									name="zipcode"
@@ -129,7 +129,7 @@ class AddOrUpdateCustomer extends Component {
 									onChange={this.handleChange}
 								/>
 							</div>
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="place">Ort</label>
 								<input
 									name="place"
@@ -138,7 +138,7 @@ class AddOrUpdateCustomer extends Component {
 									onChange={this.handleChange}
 								/>
 							</div>
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="distance">Kilometer</label>
 								<input
 									name="distance"
@@ -147,7 +147,7 @@ class AddOrUpdateCustomer extends Component {
 									onChange={this.handleChange}
 								/>
 							</div>
-							<div className="col-6">
+							<div className="col-12 col-lg-6">
 								<label value="distancetime">Anfahrtszeit</label>
 								<input
 									name="distancetime"
@@ -166,13 +166,15 @@ class AddOrUpdateCustomer extends Component {
 						</button>
 					</form>
 				</div>
-				<Link
-					to={{
-						pathname: `/AddCustomer`,
-					}}
-				>
-					Back
-				</Link>
+				<div className="mt-3">
+					<Link
+						to={{
+							pathname: `/AddCustomer`,
+						}}
+					>
+						Zurück
+					</Link>
+				</div>
 			</div>
 		);
 	}

@@ -18,7 +18,6 @@ class AddBooking extends Component {
 			sucking: '',
 			careing: '',
 			shopping: '',
-			garbage: '',
 			date: '',
 			timestart: '',
 			timeend: '',
@@ -33,7 +32,6 @@ class AddBooking extends Component {
 			sucking: this.state.sucking,
 			careing: this.state.careing,
 			shopping: this.state.shopping,
-			garbage: this.state.garbage,
 			date: this.state.date,
 			timestart: this.state.timestart,
 			timeend: this.state.timeend,
@@ -86,72 +84,117 @@ class AddBooking extends Component {
 									{this.state.lastname}
 								</label>
 							</div>
-							<div className="col-6">
+							<div className="col-12">
 								<label value="description">
 									Unterstuetzung
 								</label>
-								<label value="sucking">Staubsaugen</label>
-								<input
-									name="sucking"
-									value="Staubsaugen"
-									type="checkbox"
-									onChange={this.handleChange}
-								/>
-								<label value="cleaning">Putzen</label>
-								<input
-									name="cleaning"
-									value="Putzen"
-									type="checkbox"
-									onChange={this.handleChange}
-								/>
-								<label value="shopping">Einkaufen</label>
-								<input
-									name="shopping"
-									value="Einkaufen"
-									type="checkbox"
-									onChange={this.handleChange}
-								/>
-								<label value="careing">Betreuung</label>
-								<input
-									name="careing"
-									value="Betreuung"
-									type="checkbox"
-									onChange={this.handleChange}
-								/>
-								<label value="garbage">Tonnen im Monat</label>
-								<input
-									name="garbage"
-									value="Abfalltonnen ganzer Monat"
-									type="checkbox"
-									onChange={this.handleChange}
-								/>
 							</div>
-							<div className="col-6">
-								<label value="date">Datum</label>
-								<input
-									name="date"
-									value={this.state.date}
-									type="date"
-									onChange={this.handleChange}
-								/>
+							<div className="col-12">
+								<div className="row">
+									<div className="col-3">
+										<label value="sucking">
+											Staubsaugen
+										</label>
+									</div>
+									<div className="col-9">
+										<input
+											name="sucking"
+											value="Staubsaugen"
+											type="checkbox"
+											onChange={this.handleChange}
+										/>
+									</div>
+									<div className="col-3">
+										<label value="cleaning">Putzen</label>
+									</div>
+									<div className="col-9">
+										<input
+											name="cleaning"
+											value="Putzen"
+											type="checkbox"
+											onChange={this.handleChange}
+										/>
+									</div>
+									<div className="col-3">
+										<label value="shopping">
+											Einkaufen
+										</label>
+									</div>
+									<div className="col-9">
+										<input
+											name="shopping"
+											value="Einkaufen"
+											type="checkbox"
+											onChange={this.handleChange}
+										/>
+									</div>
+									<div className="col-3">
+										<label value="careing">Betreuung</label>
+									</div>
+									<div className="col-9">
+										<input
+											name="careing"
+											value="Betreuung"
+											type="checkbox"
+											onChange={this.handleChange}
+										/>
+									</div>
+								</div>
 							</div>
-							<div className="col-6">
-								<label value="timestart">Uhrzeit Start</label>
-								<input
-									name="timestart"
-									value={this.state.timestart}
-									type="time"
-									onChange={this.handleChange}
-								/>
+							<div className="col-12 mt-2">
+								<div className="row">
+									<div className="col-6">
+										<div className="row">
+											<div className="col-6">
+												<label value="date">
+													Datum
+												</label>
+											</div>
+											<div className="col-6">
+												<input
+													name="date"
+													value={this.state.date}
+													type="date"
+													onChange={this.handleChange}
+												/>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div className="col-6">
-								<label value="timeend">Uhrzeit Ende</label>
-								<input
-									name="timeend"
-									value={this.state.timeend}
-									type="time"
-									onChange={this.handleChange}
-								/>
+							<div className="col-12 mt-2">
+								<div className="row">
+									<div className="col-6">
+										<div className="row">
+											<div className="col-6">
+												<label value="timestart">
+													Uhrzeit Start
+												</label>
+											</div>
+											<div className="col-6">
+												<input
+													name="timestart"
+													value={this.state.timestart}
+													type="time"
+													onChange={this.handleChange}
+												/>
+											</div>
+											<div className="col-6">
+												<label value="timeend">
+													Uhrzeit Ende
+												</label>
+											</div>
+											<div className="col-6">
+												<input
+													name="timeend"
+													value={this.state.timeend}
+													type="time"
+													onChange={this.handleChange}
+												/>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<button
@@ -163,13 +206,15 @@ class AddBooking extends Component {
 						</button>
 					</form>
 				</div>
-				<Link
-					to={{
-						pathname: `/AddCustomer`,
-					}}
-				>
-					Zurueck
-				</Link>
+				<div className="mt-3">
+					<Link
+						to={{
+							pathname: `/AddCustomer`,
+						}}
+					>
+						Zurueck
+					</Link>
+				</div>
 			</div>
 		);
 	}
