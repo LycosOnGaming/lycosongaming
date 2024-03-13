@@ -43,7 +43,8 @@ class AddOrUpdateCustomer extends Component {
 				data
 			)
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data);
+				window.location = '/addCustomer';
 			})
 			.catch((error) => {
 				console.log(error);
