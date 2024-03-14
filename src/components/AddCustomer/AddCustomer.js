@@ -38,7 +38,6 @@ class AddCustomer extends Component {
 					worktime: data,
 				});
 			});
-		console.log(this.state.worktime);
 	}
 
 	render() {
