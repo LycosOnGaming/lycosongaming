@@ -49,7 +49,6 @@ class AddOrUpdateCustomer extends Component {
 			.catch((error) => {
 				console.log(error);
 			});
-		window.location = '/addCustomer';
 	};
 
 	handleChange = (event) => {
