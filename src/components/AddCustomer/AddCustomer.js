@@ -11,6 +11,7 @@ class AddCustomer extends Component {
 		this.state = {
 			customer: [],
 			worktime: [],
+			showTable: false,
 		};
 	}
 
@@ -34,9 +35,16 @@ class AddCustomer extends Component {
 		axios
 			.get('https://www.lycosongaming.de/api/drkcustomer/worktime.php')
 			.then(({ data }) => {
-				this.setState({
-					worktime: data,
-				});
+				if (data.length > 0) {
+					this.setState({
+						worktime: data,
+						showTable: true,
+					});
+				} else {
+					this.setState({
+						showTable: false,
+					});
+				}
 			});
 	}
 
@@ -102,36 +110,46 @@ class AddCustomer extends Component {
 						})}
 					</div>
 					<div className="row">
-						{this.state.worktime.map((worktime) => {
-							return (
-								<div
-									className="col-12 worktime mb-3"
-									key={worktime.drkworktime_ID}
-								>
-									<div className="row">
-										<div className="col-4">
-											{worktime.drkcustomer_Firstname}{' '}
-											{worktime.drkcustomer_Lastname}
-										</div>
-										<div className="col-3">
-											{worktime.drkworktime_Description}
-										</div>
-										<div className="col-2">
-											{worktime.drkworktime_Date}
-										</div>
-										<div className="col-1">
-											{worktime.drkworktime_TimeStart}
-										</div>
-										<div className="col-1">
-											{worktime.drkworktime_TimeEnd}
-										</div>
-										<div className="col-1">
-											{worktime.drkworktime_HoursDecimal}
+						{this.state.showTable ? (
+							this.state.worktime.map((worktime) => {
+								return (
+									<div
+										className="col-12 worktime mb-3"
+										key={worktime.drkworktime_ID}
+									>
+										<div className="row">
+											<div className="col-4">
+												{worktime.drkcustomer_Firstname}{' '}
+												{worktime.drkcustomer_Lastname}
+											</div>
+											<div className="col-3">
+												{
+													worktime.drkworktime_Description
+												}
+											</div>
+											<div className="col-2">
+												{worktime.drkworktime_Date}
+											</div>
+											<div className="col-1">
+												{worktime.drkworktime_TimeStart}
+											</div>
+											<div className="col-1">
+												{worktime.drkworktime_TimeEnd}
+											</div>
+											<div className="col-1">
+												{
+													worktime.drkworktime_HoursDecimal
+												}
+											</div>
 										</div>
 									</div>
-								</div>
-							);
-						})}
+								);
+							})
+						) : (
+							<div className="col-12 worktime mb-3">
+								Noch keine Daten Vorhanden!
+							</div>
+						)}
 					</div>
 					<div className="row">
 						<div className="col-12 col-md-6">
