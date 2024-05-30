@@ -12,12 +12,16 @@ class AddBooking extends Component {
 
 		this.state = {
 			customerid: queryParameters.get('drkcustomer'),
+			employeeid: '1',
 			firstname: '',
 			lastname: '',
 			cleaning: '',
 			sucking: '',
 			careing: '',
 			shopping: '',
+			school: '',
+			care: '',
+			food: '',
 			date: '',
 			timestart: '',
 			timeend: '',
@@ -28,10 +32,14 @@ class AddBooking extends Component {
 		e.preventDefault();
 		const data = {
 			customerid: this.state.customerid,
+			employeeid: this.state.employeeid,
 			cleaning: this.state.cleaning,
 			sucking: this.state.sucking,
 			careing: this.state.careing,
 			shopping: this.state.shopping,
+			school: this.state.school,
+			care: this.state.care,
+			food: this.state.food,
 			date: this.state.date,
 			timestart: this.state.timestart,
 			timeend: this.state.timeend,
@@ -86,62 +94,125 @@ class AddBooking extends Component {
 								</label>
 							</div>
 							<div className="col-12">
-								<label value="description">
-									Unterstuetzung
-								</label>
+								<label value="description">Unterstützung</label>
 							</div>
-							<div className="col-12">
-								<div className="row">
-									<div className="col-3">
-										<label value="sucking">
-											Staubsaugen
-										</label>
-									</div>
-									<div className="col-9">
-										<input
-											name="sucking"
-											value="Staubsaugen"
-											type="checkbox"
-											onChange={this.handleChange}
-										/>
-									</div>
-									<div className="col-3">
-										<label value="cleaning">Putzen</label>
-									</div>
-									<div className="col-9">
-										<input
-											name="cleaning"
-											value="Putzen"
-											type="checkbox"
-											onChange={this.handleChange}
-										/>
-									</div>
-									<div className="col-3">
-										<label value="shopping">
-											Einkaufen
-										</label>
-									</div>
-									<div className="col-9">
-										<input
-											name="shopping"
-											value="Einkaufen"
-											type="checkbox"
-											onChange={this.handleChange}
-										/>
-									</div>
-									<div className="col-3">
-										<label value="careing">Betreuung</label>
-									</div>
-									<div className="col-9">
-										<input
-											name="careing"
-											value="Betreuung"
-											type="checkbox"
-											onChange={this.handleChange}
-										/>
+							<div className="col-3">
+								<label value="employee">Unterstützer</label>
+							</div>
+							<div className="col-9">
+								<select
+									name="employeeid"
+									onChange={this.handleChange}
+								>
+									<option value="1">Christiane</option>
+									<option value="2">Benjamin</option>
+								</select>
+							</div>
+							{this.state.customerid == 10 ||
+							this.state.customerid == 11 ||
+							this.state.customerid == 12 ? (
+								<div className="col-12">
+									<div className="row">
+										<div className="col-3">
+											<label value="school">
+												Schulung
+											</label>
+										</div>
+										<div className="col-9">
+											<input
+												name="school"
+												value="Schulung"
+												type="checkbox"
+												onChange={this.handleChange}
+											/>
+										</div>
+										<div className="col-3">
+											<label value="care">
+												Tagespflege
+											</label>
+										</div>
+										<div className="col-9">
+											<input
+												name="care"
+												value="TPE"
+												type="checkbox"
+												onChange={this.handleChange}
+											/>
+										</div>
+										<div className="col-3">
+											<label value="food">
+												Essen auf Rädern
+											</label>
+										</div>
+										<div className="col-9">
+											<input
+												name="food"
+												value="EAR"
+												type="checkbox"
+												onChange={this.handleChange}
+											/>
+										</div>
 									</div>
 								</div>
-							</div>
+							) : (
+								<div className="col-12">
+									<div className="row">
+										<div className="col-3">
+											<label value="sucking">
+												Staubsaugen
+											</label>
+										</div>
+										<div className="col-9">
+											<input
+												name="sucking"
+												value="Staubsaugen"
+												type="checkbox"
+												onChange={this.handleChange}
+											/>
+										</div>
+										<div className="col-3">
+											<label value="cleaning">
+												Putzen
+											</label>
+										</div>
+										<div className="col-9">
+											<input
+												name="cleaning"
+												value="Putzen"
+												type="checkbox"
+												onChange={this.handleChange}
+											/>
+										</div>
+										<div className="col-3">
+											<label value="shopping">
+												Einkaufen
+											</label>
+										</div>
+										<div className="col-9">
+											<input
+												name="shopping"
+												value="Einkaufen"
+												type="checkbox"
+												onChange={this.handleChange}
+											/>
+										</div>
+										<div className="col-3">
+											<label value="careing">
+												Betreuung
+											</label>
+										</div>
+										<div className="col-9">
+											<input
+												name="careing"
+												value="Betreuung"
+												type="checkbox"
+												onChange={this.handleChange}
+											/>
+										</div>
+									</div>
+								</div>
+							)}
+
 							<div className="col-12 mt-2">
 								<div className="row">
 									<div className="col-6">
