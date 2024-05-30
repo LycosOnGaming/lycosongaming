@@ -118,25 +118,27 @@ class AddCustomer extends Component {
 										key={worktime.drkworktime_ID}
 									>
 										<div className="row">
-											<div className="col-4">
-												{worktime.drkcustomer_Firstname}{' '}
-												{worktime.drkcustomer_Lastname}
+											<div className="col-2">
+												{worktime.drkemployee_Name}
+											</div>
+											<div className="col-3">
+												{worktime.drkcustomer_Name}
 											</div>
 											<div className="col-3">
 												{
 													worktime.drkworktime_Description
 												}
 											</div>
-											<div className="col-2">
+											<div className="col">
 												{worktime.drkworktime_Date}
 											</div>
-											<div className="col-1">
+											<div className="col">
 												{worktime.drkworktime_TimeStart}
 											</div>
-											<div className="col-1">
+											<div className="col">
 												{worktime.drkworktime_TimeEnd}
 											</div>
-											<div className="col-1">
+											<div className="col">
 												{
 													worktime.drkworktime_HoursDecimal
 												}
