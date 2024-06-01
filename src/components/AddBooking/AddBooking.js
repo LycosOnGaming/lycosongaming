@@ -284,7 +284,7 @@ class AddBooking extends Component {
 							pathname: `/AddCustomer`,
 						}}
 					>
-						Zurueck
+						Zurück
 					</Link>
 				</div>
 			</div>

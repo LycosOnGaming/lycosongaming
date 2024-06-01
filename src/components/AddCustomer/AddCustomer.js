@@ -35,7 +35,7 @@ class AddCustomer extends Component {
 		axios
 			.get('https://www.lycosongaming.de/api/drkcustomer/worktime.php')
 			.then(({ data }) => {
-				if (data.length > 0) {
+				if (data !== null) {
 					this.setState({
 						worktime: data,
 						showTable: true,
@@ -110,35 +110,46 @@ class AddCustomer extends Component {
 						})}
 					</div>
 					<div className="row">
+						<div className="col-12 worktime">
+							<div className="row my-3 text-center">
+								<div className="col-2">Mitarbeiter</div>
+								<div className="col-3">Kunde</div>
+								<div className="col-2">Beschreibung</div>
+								<div className="col-2">Datum</div>
+								<div className="col-1">Start</div>
+								<div className="col-1">Ende</div>
+								<div className="col-1">Dauer</div>
+							</div>
+						</div>
 						{this.state.showTable ? (
 							this.state.worktime.map((worktime) => {
 								return (
-									<div
-										className="col-12 worktime mb-3"
-										key={worktime.drkworktime_ID}
-									>
-										<div className="row">
+									<div className="col-12 worktime">
+										<div
+											className="row my-3 text-center"
+											key={worktime.drkworktime_ID}
+										>
 											<div className="col-2">
 												{worktime.drkemployee_Name}
 											</div>
 											<div className="col-3">
 												{worktime.drkcustomer_Name}
 											</div>
-											<div className="col-3">
+											<div className="col-2">
 												{
 													worktime.drkworktime_Description
 												}
 											</div>
-											<div className="col">
+											<div className="col-2">
 												{worktime.drkworktime_Date}
 											</div>
-											<div className="col">
+											<div className="col-1">
 												{worktime.drkworktime_TimeStart}
 											</div>
-											<div className="col">
+											<div className="col-1">
 												{worktime.drkworktime_TimeEnd}
 											</div>
-											<div className="col">
+											<div className="col-1">
 												{
 													worktime.drkworktime_HoursDecimal
 												}

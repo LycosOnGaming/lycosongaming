@@ -389,7 +389,7 @@ class Tool extends Component {
 								{this.state.user} geladen.
 							</div>
 							<div className="col-12 my-3">
-								Wer Supportet nicht zurueck.
+								Wer Supportet nicht Zurück.
 							</div>
 							<div className="col-12">
 								<button onClick={this.getNoSupporter}>
