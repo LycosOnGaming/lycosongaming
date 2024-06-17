@@ -25,7 +25,7 @@ class AddBooking extends Component {
 			date: new Date().toLocaleDateString('en-CA'),
 			timestart: '',
 			timeend: '',
-			shift: '',
+			shift: 'morgens',
 		};
 		console.log(this.state.customerid);
 	}
