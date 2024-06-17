@@ -25,6 +25,7 @@ class AddBooking extends Component {
 			date: new Date().toLocaleDateString('en-CA'),
 			timestart: '',
 			timeend: '',
+			shift: '',
 		};
 		console.log(this.state.customerid);
 	}
@@ -44,6 +45,7 @@ class AddBooking extends Component {
 			date: this.state.date,
 			timestart: this.state.timestart,
 			timeend: this.state.timeend,
+			shift: this.state.shift,
 		};
 
 		axios
@@ -126,6 +128,22 @@ class AddBooking extends Component {
 												type="checkbox"
 												onChange={this.handleChange}
 											/>
+										</div>
+										<div className="col-9">
+											<select
+												name="shift"
+												onChange={this.handleChange}
+											>
+												<option value="morgens">
+													Morgens
+												</option>
+												<option value="mittags">
+													Mittags
+												</option>
+												<option value="abends">
+													Abends
+												</option>
+											</select>
 										</div>
 										<div className="col-3">
 											<label value="care">
