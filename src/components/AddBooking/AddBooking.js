@@ -129,6 +129,11 @@ class AddBooking extends Component {
 												onChange={this.handleChange}
 											/>
 										</div>
+										<div className="col-3">
+											<label value="shiftlabel">
+												Dienst
+											</label>
+										</div>
 										<div className="col-9">
 											<select
 												name="shift"
