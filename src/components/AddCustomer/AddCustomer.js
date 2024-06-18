@@ -166,13 +166,16 @@ class AddCustomer extends Component {
 					</div>
 					<div className="row">
 						<div className="col-12 col-md-6">
-							<button
-								className="mt-3"
-								type="submit"
-								onClick={this.handleSubmit}
+							<Link
+								className="btn btn-primary mt-3"
+								to={{
+									pathname: `/api/generatePDF.php`,
+								}}
+								target="_self"
+								download
 							>
-								PDF erzeugen
-							</button>
+								PDF Herunterladen
+							</Link>
 						</div>
 					</div>
 				</div>
