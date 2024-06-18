@@ -18,9 +18,7 @@ class AddCustomer extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		axios.post(
-			'https://www.lycosongaming.de/api/drkcustomer/generatePDF.php'
-		);
+		axios.post('https://www.lycosongaming.de/api/generatePDF.php').then();
 	};
 
 	componentDidMount() {
@@ -166,15 +164,22 @@ class AddCustomer extends Component {
 					</div>
 					<div className="row">
 						<div className="col-12 col-md-6">
-							<Link
+							<button
 								className="btn btn-primary mt-3"
+								type="submit"
+								onClick={this.handleSubmit}
+							>
+								PDF erzeugen
+							</button>
+							<Link
+								className="btn btn-primary ml-3 mt-3"
 								to={{
-									pathname: `/api/generatePDF.php`,
+									pathname: `/api/download.php`,
 								}}
 								target="_self"
 								download
 							>
-								PDF Herunterladen
+								Download
 							</Link>
 						</div>
 					</div>
