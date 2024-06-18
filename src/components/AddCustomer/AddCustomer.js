@@ -17,8 +17,11 @@ class AddCustomer extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		axios.post('https://www.lycosongaming.de/api/generatePDF.php');
+	};
 
-		axios.post('https://www.lycosongaming.de/api/generatePDF.php').then();
+	handleDownload = (e) => {
+		axios.get('https://www.lycosongaming.de/api/download.php');
 	};
 
 	componentDidMount() {
@@ -173,11 +176,7 @@ class AddCustomer extends Component {
 							</button>
 							<Link
 								className="btn btn-primary ml-3 mt-3"
-								to={{
-									pathname: `/api/download.php`,
-								}}
-								target="_self"
-								download
+								onClick={this.handleDownload}
 							>
 								Download
 							</Link>
