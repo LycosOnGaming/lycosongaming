@@ -23,6 +23,8 @@ class FMSearch extends Component {
 
 	API Key: 729410b2c958c9834b769ff3f6c1d045
 	Shared Secret: 34c3c2f17a50d3d3783afef09869cf6d
+
+	Kein Länder-Dropwown zur Auswahl, da ich diesen Hinweis nicht in der API finden konnte :-(
 	*/
 
 	handleChange = (event) => {
