@@ -3,7 +3,7 @@ import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import './FMSearchArtist.scss';
+import './FMShowArtist.scss';
 
 const API_Key = '729410b2c958c9834b769ff3f6c1d045';
 
@@ -14,7 +14,7 @@ API Key: 729410b2c958c9834b769ff3f6c1d045
 Shared Secret: 34c3c2f17a50d3d3783afef09869cf6d
 */
 
-class FMSearchArtist extends Component {
+class FMShowArtist extends Component {
 	constructor(props) {
 		super(props);
 
@@ -231,4 +231,4 @@ class FMSearchArtist extends Component {
 	}
 }
 
-export default FMSearchArtist;
+export default FMShowArtist;

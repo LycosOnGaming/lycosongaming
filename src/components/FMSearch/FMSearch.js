@@ -97,171 +97,100 @@ class FMSearch extends Component {
 			});
 	}
 
+	FMGetArtist(myArtist) {
+		return (
+			<div key={myArtist.name} className="col-12 col-md-6">
+				<Link
+					to={{
+						pathname: `/FMShowArtist?artist=${myArtist.name}`,
+					}}
+					onClick={() => {
+						window.location.href =
+							'/FMShowArtist?artist=' + myArtist.name + '';
+					}}
+				>
+					<div className="row border rounded my-3 mx-1 py-4">
+						<div className="col-12 col-lg-6">
+							{myArtist.image.map((myImage, count) => {
+								if (myImage['size'] === 'large') {
+									return (
+										<div
+											key={count}
+											className="text-center"
+										>
+											<img
+												className="border rounded-circle w-50 image"
+												src={myImage['#text']}
+												alt={myImage['#text']}
+											/>
+										</div>
+									);
+								} else {
+									return '';
+								}
+							})}
+						</div>
+						<div
+							key={myArtist.playcount}
+							className="col-12 col-lg-6"
+						>
+							<p>{myArtist.name}</p>
+							<p className="text-white mb-0">
+								Wurde <i>{myArtist.playcount}</i> mal abgespielt
+							</p>
+						</div>
+					</div>
+				</Link>
+			</div>
+		);
+	}
+
 	render() {
 		return (
 			<div className="FMSearch row">
+				<div className="col-12 text-center">
+					<h1>FM API Suche</h1>
+				</div>
+				<div className="col-12 col-lg-6">
+					<label>
+						Künstler Suche: (
+						<i>Den Künstler einfach ins Suchfeld eingeben</i>)
+					</label>
+					<input
+						name="search"
+						className="w-100"
+						value={this.state.search}
+						type="text"
+						placeholder="Künstler Suche"
+						onBlur={this.handleChange}
+						onChange={this.handleChange}
+					/>
+				</div>
+				<div className="col-12 col-lg-6 text-center my-auto">
+					<Link
+						to={{
+							pathname: `/FMCompareArtist`,
+						}}
+					>
+						Künstler vergleichen
+					</Link>
+				</div>
 				<div className="col-lg-12">
-					<form>
-						<input
-							name="search"
-							value={this.state.search}
-							type="text"
-							onBlur={this.handleChange}
-							onChange={this.handleChange}
-						/>
-					</form>
-				</div>
+					<div id="searchResult" className="row">
+						{this.state.searchArtists.map((myArtist) => {
+							{
+								return this.FMGetArtist(myArtist);
+							}
+						})}
+					</div>
 
-				<div id="searchResult" className="row">
-					{this.state.searchArtists.map((myArtist) => {
-						return (
-							<div
-								key={myArtist.name}
-								className="border col-12 col-md-5 m-3 rounded"
-							>
-								<div className="row p-4">
-									<div className="mb-3 col-12">
-										<Link
-											to={{
-												pathname: `/FMSearchArtist?artist=${myArtist.name}`,
-											}}
-											onClick={() => {
-												window.location.href =
-													'/FMSearchArtist?artist=' +
-													myArtist.name +
-													'';
-											}}
-										>
-											{myArtist.image.map(
-												(myImage, count) => {
-													if (
-														myImage['size'] ===
-														'large'
-													) {
-														return (
-															<div key={count}>
-																<img
-																	className="w-50"
-																	src={
-																		myImage[
-																			'#text'
-																		]
-																	}
-																	alt={
-																		myImage[
-																			'#text'
-																		]
-																	}
-																/>
-															</div>
-														);
-													} else {
-														return '';
-													}
-												}
-											)}
-										</Link>
-									</div>
-									<div
-										key={myArtist.playcount}
-										className="mb-3 col-12"
-									>
-										<Link
-											to={{
-												pathname: `/FMSearchArtist?artist=${myArtist.name}`,
-											}}
-											onClick={() => {
-												window.location.href =
-													'/FMSearchArtist?artist=' +
-													myArtist.name +
-													'';
-											}}
-										>
-											<p>{myArtist.name}</p>
-										</Link>
-										Wurde <i>{myArtist.playcount}</i> mal
-										abgespielt
-									</div>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-
-				<div id="initialLoad">
-					{this.state.artist.map((myArtist) => {
-						return (
-							<div
-								key={myArtist.name}
-								className="border col-12 col-md-5 m-3 rounded"
-							>
-								<div className="row p-4">
-									<div className="mb-3 col-12">
-										<Link
-											to={{
-												pathname: `/FMSearchArtist?artist=${myArtist.name}`,
-											}}
-											onClick={() => {
-												window.location.href =
-													'/FMSearchArtist?artist=' +
-													myArtist.name +
-													'';
-											}}
-										>
-											{myArtist.image.map(
-												(myImage, count) => {
-													if (
-														myImage['size'] ===
-														'large'
-													) {
-														return (
-															<div key={count}>
-																<img
-																	className="w-50"
-																	src={
-																		myImage[
-																			'#text'
-																		]
-																	}
-																	alt={
-																		myImage[
-																			'#text'
-																		]
-																	}
-																/>
-															</div>
-														);
-													} else {
-														return '';
-													}
-												}
-											)}
-										</Link>
-									</div>
-									<div
-										key={myArtist.playcount}
-										className="mb-3 col-12"
-									>
-										<Link
-											to={{
-												pathname: `/FMSearchArtist?artist=${myArtist.name}`,
-											}}
-											onClick={() => {
-												window.location.href =
-													'/FMSearchArtist?artist=' +
-													myArtist.name +
-													'';
-											}}
-										>
-											<p>{myArtist.name}</p>
-										</Link>
-										Wurde <i>{myArtist.playcount}</i> mal
-										abgespielt
-									</div>
-								</div>
-							</div>
-						);
-					})}
+					<div id="initialLoad" className="row">
+						{this.state.artist.map((myArtist) => {
+							{
+								return this.FMGetArtist(myArtist);
+							}
+						})}
+					</div>
 				</div>
 			</div>
 		);
