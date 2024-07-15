@@ -112,6 +112,7 @@ class FMCompareArtist extends Component {
 						</div>
 						<div key={index} className="col-12 col-lg-6">
 							<p>{myArtist.name}</p>
+							{/* Wird bei der Suche nicht geliefert */}
 							{myArtist.playcount > 0 ? (
 								<p className="text-white mb-0">
 									Wurde <i>{myArtist.playcount}</i> mal
