@@ -173,6 +173,7 @@ class FMCompareArtist extends Component {
 						onChange={this.handleChange}
 					/>
 				</div>
+				{/* Wie kann ich hier die Redundanz umgehen. Bitte um Feedback. */}
 				<div className="col-12 text-center">
 					<div className="row">
 						<div className="col-12 col-lg-6">

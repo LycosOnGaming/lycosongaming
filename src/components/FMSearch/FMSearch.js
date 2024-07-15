@@ -13,7 +13,6 @@ class FMSearch extends Component {
 		this.state = {
 			artist: [],
 			allArtist: [],
-			searchArtists: [],
 			search: '',
 		};
 	}
@@ -28,8 +27,6 @@ class FMSearch extends Component {
 	*/
 
 	handleChange = (event) => {
-		const initialLoad = document.getElementById('initialLoad');
-		const searchResult = document.getElementById('searchResult');
 		let searchTarget = event.target.value;
 		this.setState({ search: searchTarget });
 
@@ -43,27 +40,19 @@ class FMSearch extends Component {
 						'&format=json'
 				)
 				.then(({ data }) => {
-					initialLoad.className = 'd-none';
-					searchResult.className = 'row';
 					const results = data.results.artistmatches.artist;
 
 					this.setState({
-						searchArtists: results,
+						artist: results,
 					});
 				})
 				.catch((err) => {
 					console.log('Artist Search error: ', err);
 				});
-		} else {
-			initialLoad.className = 'row';
-			searchResult.className = 'd-none';
 		}
 	};
 
 	componentDidMount() {
-		// const myArtists = [];
-		const initialLoad = document.getElementById('initialLoad');
-		initialLoad.className = 'row';
 		axios
 			.get(
 				'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=' +
@@ -76,6 +65,9 @@ class FMSearch extends Component {
 					artist: results,
 				});
 				results.forEach((element) => {
+					// Ein Versuch um die Platzhalterbilder mit dem ersten Album Logo
+					// zu ersetzen und mehr informationen in der Kachel auszugeben.
+					// Leider nicht hinbekommen bitte Feedback wie man das machen könnte.
 					axios
 						.get(
 							'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' +
@@ -182,15 +174,7 @@ class FMSearch extends Component {
 					</Link>
 				</div>
 				<div className="col-lg-12">
-					<div id="searchResult" className="row">
-						{this.state.searchArtists.map((myArtist, index) => {
-							{
-								return this.FMGetArtist(myArtist, index);
-							}
-						})}
-					</div>
-
-					<div id="initialLoad" className="row">
+					<div className="row">
 						{this.state.artist.map((myArtist, index) => {
 							{
 								return this.FMGetArtist(myArtist, index);
