@@ -44,6 +44,7 @@ class FMSearch extends Component {
 					initialLoad.className = 'd-none';
 					searchResult.className = 'row';
 					const results = data.results.artistmatches.artist;
+
 					this.setState({
 						searchArtists: results,
 					});
@@ -97,7 +98,7 @@ class FMSearch extends Component {
 			});
 	}
 
-	FMGetArtist(myArtist) {
+	FMGetArtist(myArtist, index) {
 		return (
 			<div key={myArtist.name} className="col-12 col-md-6">
 				<Link
@@ -130,14 +131,16 @@ class FMSearch extends Component {
 								}
 							})}
 						</div>
-						<div
-							key={myArtist.playcount}
-							className="col-12 col-lg-6"
-						>
+						<div key={index} className="col-12 col-lg-6">
 							<p>{myArtist.name}</p>
-							<p className="text-white mb-0">
-								Wurde <i>{myArtist.playcount}</i> mal abgespielt
-							</p>
+							{myArtist.playcount > 0 ? (
+								<p className="text-white mb-0">
+									Wurde <i>{myArtist.playcount}</i> mal
+									abgespielt
+								</p>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 				</Link>
@@ -177,17 +180,17 @@ class FMSearch extends Component {
 				</div>
 				<div className="col-lg-12">
 					<div id="searchResult" className="row">
-						{this.state.searchArtists.map((myArtist) => {
+						{this.state.searchArtists.map((myArtist, index) => {
 							{
-								return this.FMGetArtist(myArtist);
+								return this.FMGetArtist(myArtist, index);
 							}
 						})}
 					</div>
 
 					<div id="initialLoad" className="row">
-						{this.state.artist.map((myArtist) => {
+						{this.state.artist.map((myArtist, index) => {
 							{
-								return this.FMGetArtist(myArtist);
+								return this.FMGetArtist(myArtist, index);
 							}
 						})}
 					</div>

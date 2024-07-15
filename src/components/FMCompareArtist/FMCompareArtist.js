@@ -77,7 +77,7 @@ class FMCompareArtist extends Component {
 		}
 	};
 
-	FMGetArtist(myArtist) {
+	FMGetArtist(myArtist, index) {
 		return (
 			<div key={myArtist.name} className="col-12">
 				<Link
@@ -110,14 +110,16 @@ class FMCompareArtist extends Component {
 								}
 							})}
 						</div>
-						<div
-							key={myArtist.playcount}
-							className="col-12 col-lg-6"
-						>
+						<div key={index} className="col-12 col-lg-6">
 							<p>{myArtist.name}</p>
-							<p className="text-white mb-0">
-								Wurde <i>{myArtist.playcount}</i> mal abgespielt
-							</p>
+							{myArtist.playcount > 0 ? (
+								<p className="text-white mb-0">
+									Wurde <i>{myArtist.playcount}</i> mal
+									abgespielt
+								</p>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 				</Link>
@@ -176,10 +178,11 @@ class FMCompareArtist extends Component {
 							<div className="row">
 								<div id="searchResultLeft" className="row">
 									{this.state.searchArtistsLeft.map(
-										(myArtist) => {
+										(myArtist, index) => {
 											{
 												return this.FMGetArtist(
-													myArtist
+													myArtist,
+													index
 												);
 											}
 										}
@@ -191,10 +194,11 @@ class FMCompareArtist extends Component {
 							<div className="row">
 								<div id="searchResultRight" className="row">
 									{this.state.searchArtistsRight.map(
-										(myArtist) => {
+										(myArtist, index) => {
 											{
 												return this.FMGetArtist(
-													myArtist
+													myArtist,
+													index
 												);
 											}
 										}
