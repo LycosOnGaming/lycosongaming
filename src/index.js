@@ -15,6 +15,8 @@ import SocialMedia from './components/SocialMedia/SocialMedia';
 import Designer from './components/Designer/Designer';
 import Reviews from './components/Reviews/Reviews';
 import Tool from './components/Tool/Tool';
+import FMSearch from './components/FMSearch/FMSearch';
+import FMSearchArtist from './components/FMSearchArtist/FMSearchArtist';
 import Datenschutz from './components/Datenschutz/Datenschutz';
 import Impressum from './components/Impressum/Impressum';
 import Disclaimer from './components/Disclaimer/Disclaimer';
@@ -63,6 +65,11 @@ ReactDOM.render(
 							<Route
 								path="/AddOrUpdateCustomer"
 								component={AddOrUpdateCustomer}
+							/>
+							<Route path="/FMSearch" component={FMSearch} />
+							<Route
+								path="/FMSearchArtist"
+								component={FMSearchArtist}
 							/>
 							<Route
 								path="/datenschutz"
