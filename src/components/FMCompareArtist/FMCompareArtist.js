@@ -146,7 +146,7 @@ class FMCompareArtist extends Component {
 				<div className="col-12 col-lg-6">
 					<label>
 						Künstler Suche: (
-						<i>Den Künstler einfach ins Suchfeld eingeben</i>)
+						<i>Ersten Künstler einfach ins Suchfeld eingeben</i>)
 					</label>
 					<input
 						name="searchLeft"
@@ -161,7 +161,7 @@ class FMCompareArtist extends Component {
 				<div className="col-12 col-lg-6">
 					<label>
 						Künstler Suche: (
-						<i>Den Künstler einfach ins Suchfeld eingeben</i>)
+						<i>Zweiten Künstler einfach ins Suchfeld eingeben</i>)
 					</label>
 					<input
 						name="searchRight"

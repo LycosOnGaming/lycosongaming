@@ -12,7 +12,6 @@ class FMSearch extends Component {
 
 		this.state = {
 			artist: [],
-			allArtist: [],
 			search: '',
 		};
 	}
@@ -31,65 +30,14 @@ class FMSearch extends Component {
 		this.setState({ search: searchTarget });
 
 		if (searchTarget !== '') {
-			axios
-				.get(
-					'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' +
-						this.state.search +
-						'&api_key=' +
-						API_Key +
-						'&format=json'
-				)
-				.then(({ data }) => {
-					const results = data.results.artistmatches.artist;
-
-					this.setState({
-						artist: results,
-					});
-				})
-				.catch((err) => {
-					console.log('Artist Search error: ', err);
-				});
+			this.loadData('artist.search', '', this.state.search);
+		} else {
+			this.loadData('chart.gettopartists', 10);
 		}
 	};
 
 	componentDidMount() {
-		axios
-			.get(
-				'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=' +
-					API_Key +
-					'&limit=10&format=json'
-			)
-			.then(({ data }) => {
-				const results = data.artists.artist;
-				this.setState({
-					artist: results,
-				});
-				results.forEach((element) => {
-					// Ein Versuch um die Platzhalterbilder mit dem ersten Album Logo
-					// zu ersetzen und mehr informationen in der Kachel auszugeben.
-					// Leider nicht hinbekommen bitte Feedback wie man das machen könnte.
-					axios
-						.get(
-							'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' +
-								element.name +
-								'&api_key=' +
-								API_Key +
-								'&lang=de&format=json'
-						)
-						.then((result) => {
-							this.setState({
-								allArtist: result.data.artist,
-							});
-							// myArtists.push();
-						})
-						.catch((err) => {
-							console.log('Artist Info error: ', err);
-						});
-				});
-			})
-			.catch((err) => {
-				console.log('Top Artist error: ', err);
-			});
+		this.loadData('chart.gettopartists', 10);
 	}
 
 	FMGetArtist(myArtist, index) {
@@ -141,6 +89,55 @@ class FMSearch extends Component {
 				</Link>
 			</div>
 		);
+	}
+
+	loadData(pMethod, pLimit = '', pSearch = '', pDetails = false) {
+		let results = '';
+		let myLimit = '';
+		let mySearch = '';
+
+		if (pLimit !== '') {
+			myLimit = '&limit=' + pLimit;
+		}
+
+		if (pSearch !== '') {
+			mySearch = '&artist=' + pSearch;
+		}
+
+		let myUrl =
+			'http://ws.audioscrobbler.com/2.0/?method=' +
+			pMethod +
+			mySearch +
+			'&api_key=' +
+			API_Key +
+			myLimit +
+			'&format=json';
+
+		axios
+			.get(myUrl)
+			.then(({ data }) => {
+				if (pSearch !== '' && !pDetails) {
+					results = data.results.artistmatches.artist;
+				} else if (pDetails) {
+					results = data.artist;
+				} else {
+					results = data.artists.artist;
+				}
+
+				this.setState({
+					artist: results,
+				});
+				// results.forEach((element) => {
+				// 	// Ein Versuch um die Platzhalterbilder mit dem ersten Album Logo
+				// 	// zu ersetzen und mehr informationen in der Kachel auszugeben.
+				// 	// Leider nicht hinbekommen bitte Feedback wie man das machen könnte.
+
+				// 	this.loadData('artist.getinfo', '', element.name, true);
+				// });
+			})
+			.catch((err) => {
+				console.log('Top Artist error: ', err);
+			});
 	}
 
 	render() {
