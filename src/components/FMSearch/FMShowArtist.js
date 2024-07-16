@@ -80,7 +80,7 @@ class FMShowArtist extends Component {
 		axios
 			.get(myUrl)
 			.then(({ data }) => {
-				// switch between artist, album 6 track data
+				// switch between artist, album & track data
 				if (pType === 'artist') {
 					this.setState({
 						artist: data.artist.name,
