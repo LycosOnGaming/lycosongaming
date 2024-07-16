@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import './FMCompareArtist.scss';
 import { error } from 'jquery';
 
 const API_Key = '729410b2c958c9834b769ff3f6c1d045';

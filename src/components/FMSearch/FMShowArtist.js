@@ -3,8 +3,6 @@ import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import './FMShowArtist.scss';
-
 const API_Key = '729410b2c958c9834b769ff3f6c1d045';
 
 /*
@@ -89,7 +87,7 @@ class FMShowArtist extends Component {
 
 	render() {
 		return (
-			<div key={this.state.artist} className="FMSearchArtist">
+			<div key={this.state.artist}>
 				<div className="row justify-content-center">
 					<div className="col-12 mb-3">
 						<Link
