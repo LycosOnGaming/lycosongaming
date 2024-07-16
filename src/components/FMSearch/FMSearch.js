@@ -17,6 +17,7 @@ class FMSearch extends Component {
 	}
 
 	/*
+	Sorry für Deutsch
 	Gehört eigentlich in eine Config
 
 	API Key: 729410b2c958c9834b769ff3f6c1d045
@@ -29,6 +30,7 @@ class FMSearch extends Component {
 		let searchTarget = event.target.value;
 		this.setState({ search: searchTarget });
 
+		// handle the search, with and without (get initial state) result
 		if (searchTarget !== '') {
 			this.loadData('artist.search', '', this.state.search);
 		} else {
@@ -37,10 +39,12 @@ class FMSearch extends Component {
 	};
 
 	componentDidMount() {
+		// handle initial state
 		this.loadData('chart.gettopartists', 10);
 	}
 
 	FMGetArtist(myArtist, index) {
+		// function to show the artists
 		return (
 			<div key={myArtist.name} className="col-12 col-md-6">
 				<Link
@@ -52,8 +56,9 @@ class FMSearch extends Component {
 							'/FMShowArtist?artist=' + myArtist.name + '';
 					}}
 				>
-					<div className="row border rounded my-3 mx-1 py-4">
+					<div className="row myCard border rounded my-3 mx-1 py-4">
 						<div className="col-12 col-lg-6">
+							{/* get the large image  */}
 							{myArtist.image.map((myImage, count) => {
 								if (myImage['size'] === 'large') {
 									return (
@@ -75,7 +80,7 @@ class FMSearch extends Component {
 						</div>
 						<div key={index} className="col-12 col-lg-6">
 							<p>{myArtist.name}</p>
-							{/* Wird bei der Suche nicht geliefert */}
+							{/* Not delivered from the API in the search so to show it only if we have a playcount*/}
 							{myArtist.playcount > 0 ? (
 								<p className="text-white mb-0">
 									Wurde <i>{myArtist.playcount}</i> mal
@@ -91,7 +96,7 @@ class FMSearch extends Component {
 		);
 	}
 
-	loadData(pMethod, pLimit = '', pSearch = '', pDetails = false) {
+	loadData(pMethod, pLimit = '', pSearch = '') {
 		let results = '';
 		let myLimit = '';
 		let mySearch = '';
@@ -104,6 +109,8 @@ class FMSearch extends Component {
 			mySearch = '&artist=' + pSearch;
 		}
 
+		// build the search URL
+
 		let myUrl =
 			'http://ws.audioscrobbler.com/2.0/?method=' +
 			pMethod +
@@ -113,13 +120,13 @@ class FMSearch extends Component {
 			myLimit +
 			'&format=json';
 
+		// fetch Data from API
 		axios
 			.get(myUrl)
 			.then(({ data }) => {
-				if (pSearch !== '' && !pDetails) {
+				//switch between search & initial data
+				if (pSearch !== '') {
 					results = data.results.artistmatches.artist;
-				} else if (pDetails) {
-					results = data.artist;
 				} else {
 					results = data.artists.artist;
 				}
@@ -128,11 +135,12 @@ class FMSearch extends Component {
 					artist: results,
 				});
 				// results.forEach((element) => {
+				//  // Für für Deutsch
 				// 	// Ein Versuch um die Platzhalterbilder mit dem ersten Album Logo
 				// 	// zu ersetzen und mehr informationen in der Kachel auszugeben.
 				// 	// Leider nicht hinbekommen bitte Feedback wie man das machen könnte.
 
-				// 	this.loadData('artist.getinfo', '', element.name, true);
+				// 	this.loadData('artist.getinfo', '', element.name, true); // ToDo in progress
 				// });
 			})
 			.catch((err) => {
@@ -172,6 +180,7 @@ class FMSearch extends Component {
 				</div>
 				<div className="col-lg-12">
 					<div className="row">
+						{/* Show results for search or initial state */}
 						{this.state.artist.map((myArtist, index) => {
 							{
 								return this.FMGetArtist(myArtist, index);

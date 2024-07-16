@@ -19,6 +19,7 @@ class FMCompareArtist extends Component {
 	}
 
 	/*
+	Sorry für Deutsch
 	Gehört eigentlich in eine Config
 
 	API Key: 729410b2c958c9834b769ff3f6c1d045
@@ -26,12 +27,11 @@ class FMCompareArtist extends Component {
 	*/
 
 	handleChange = (event) => {
-		const searchResultLeft = document.getElementById('searchResultLeft');
-		const searchResultRight = document.getElementById('searchResultRight');
 		let mySearch = '';
 		let searchTarget = event.target.value;
 		let searchTargetName = event.target.name;
 
+		// handle the search for the left & right side
 		if (searchTargetName === 'searchLeft') {
 			this.setState({ searchLeft: searchTarget });
 			mySearch = this.state.searchLeft;
@@ -43,6 +43,7 @@ class FMCompareArtist extends Component {
 		}
 
 		if (searchTarget !== '') {
+			// Fetch Data from API
 			axios
 				.get(
 					'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' +
@@ -53,16 +54,15 @@ class FMCompareArtist extends Component {
 				)
 				.then(({ data }) => {
 					const results = data.results.artistmatches.artist;
+					// handle the result for the left & right side
 					if (searchTargetName === 'searchLeft') {
 						this.setState({
 							searchArtistsLeft: results,
 						});
-						searchResultLeft.className = 'row';
 					} else if (searchTargetName === 'searchRight') {
 						this.setState({
 							searchArtistsRight: results,
 						});
-						searchResultRight.className = 'row';
 					} else {
 						throw new error('Not Supported');
 					}
@@ -70,13 +70,11 @@ class FMCompareArtist extends Component {
 				.catch((err) => {
 					console.log('Artist Search error: ', err);
 				});
-		} else {
-			searchResultLeft.className = '';
-			searchResultRight.className = '';
 		}
 	};
 
 	FMGetArtist(myArtist, index) {
+		// function to show the artists
 		return (
 			<div key={myArtist.name} className="col-12">
 				<Link
@@ -88,8 +86,9 @@ class FMCompareArtist extends Component {
 							'/FMShowArtist?artist=' + myArtist.name + '';
 					}}
 				>
-					<div className="row border rounded my-3 mx-1 py-4">
+					<div className="row myCard border rounded my-3 mx-1 py-4">
 						<div className="col-12 col-lg-6">
+							{/* get the large image  */}
 							{myArtist.image.map((myImage, count) => {
 								if (myImage['size'] === 'large') {
 									return (
@@ -111,7 +110,7 @@ class FMCompareArtist extends Component {
 						</div>
 						<div key={index} className="col-12 col-lg-6">
 							<p>{myArtist.name}</p>
-							{/* Wird bei der Suche nicht geliefert */}
+							{/* Not delivered from the API in the search so to show it only if we have a playcount*/}
 							{myArtist.playcount > 0 ? (
 								<p className="text-white mb-0">
 									Wurde <i>{myArtist.playcount}</i> mal
@@ -172,41 +171,25 @@ class FMCompareArtist extends Component {
 						onChange={this.handleChange}
 					/>
 				</div>
-				{/* Wie kann ich hier die Redundanz umgehen. Bitte um Feedback. */}
-				<div className="col-12 text-center">
+				{/*Sorry für Deutsch. Wie kann ich hier die Redundanz umgehen. Bitte um Feedback. */}
+				<div className="col-12 col-lg-6">
 					<div className="row">
-						<div className="col-12 col-lg-6">
-							<div className="row">
-								<div id="searchResultLeft" className="row">
-									{this.state.searchArtistsLeft.map(
-										(myArtist, index) => {
-											{
-												return this.FMGetArtist(
-													myArtist,
-													index
-												);
-											}
-										}
-									)}
-								</div>
-							</div>
-						</div>
-						<div className="col-12 col-lg-6">
-							<div className="row">
-								<div id="searchResultRight" className="row">
-									{this.state.searchArtistsRight.map(
-										(myArtist, index) => {
-											{
-												return this.FMGetArtist(
-													myArtist,
-													index
-												);
-											}
-										}
-									)}
-								</div>
-							</div>
-						</div>
+						{this.state.searchArtistsLeft.map((myArtist, index) => {
+							{
+								return this.FMGetArtist(myArtist, index);
+							}
+						})}
+					</div>
+				</div>
+				<div className="col-12 col-lg-6">
+					<div className="row">
+						{this.state.searchArtistsRight.map(
+							(myArtist, index) => {
+								{
+									return this.FMGetArtist(myArtist, index);
+								}
+							}
+						)}
 					</div>
 				</div>
 			</div>
