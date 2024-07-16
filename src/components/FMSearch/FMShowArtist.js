@@ -81,18 +81,18 @@ class FMShowArtist extends Component {
 			.get(myUrl)
 			.then(({ data }) => {
 				// switch between artist, album 6 track data
-				if (pType == 'artist') {
+				if (pType === 'artist') {
 					this.setState({
 						artist: data.artist.name,
 						summary: data.artist.bio.summary,
 						listeners: data.artist.stats.listeners,
 						playcount: data.artist.stats.playcount,
 					});
-				} else if (pType == 'album') {
+				} else if (pType === 'album') {
 					this.setState({
 						album: data.topalbums.album,
 					});
-				} else if (pType == 'track') {
+				} else if (pType === 'track') {
 					this.setState({
 						tracks: data.toptracks.track,
 					});
