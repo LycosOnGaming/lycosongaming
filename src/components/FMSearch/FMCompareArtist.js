@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import config from './config.json';
 
 import { error } from 'jquery';
 
-const API_Key = '729410b2c958c9834b769ff3f6c1d045';
+const API_Key = config.API_Key;
 
 class FMCompareArtist extends Component {
 	constructor(props) {
@@ -17,14 +18,6 @@ class FMCompareArtist extends Component {
 			searchRight: '',
 		};
 	}
-
-	/*
-	Sorry für Deutsch
-	Gehört eigentlich in eine Config
-
-	API Key: 729410b2c958c9834b769ff3f6c1d045
-	Shared Secret: 34c3c2f17a50d3d3783afef09869cf6d
-	*/
 
 	handleChange = (event) => {
 		let mySearch = '';

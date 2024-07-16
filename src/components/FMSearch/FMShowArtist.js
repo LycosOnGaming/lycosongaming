@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import config from './config.json';
 
-const API_Key = '729410b2c958c9834b769ff3f6c1d045';
-
-/*
-Sorry für Deutsch
-Gehört eigentlich in eine Config
-
-API Key: 729410b2c958c9834b769ff3f6c1d045
-Shared Secret: 34c3c2f17a50d3d3783afef09869cf6d
-*/
+const API_Key = config.API_Key;
 
 class FMShowArtist extends Component {
 	constructor(props) {
