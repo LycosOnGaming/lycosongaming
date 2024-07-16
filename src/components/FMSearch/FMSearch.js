@@ -136,7 +136,7 @@ class FMSearch extends Component {
 				// });
 			})
 			.catch((err) => {
-				console.log('Top Artist error: ', err);
+				console.log('Load Artist error: ', err);
 			});
 	}
 
