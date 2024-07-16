@@ -175,9 +175,7 @@ class FMCompareArtist extends Component {
 				<div className="col-12 col-lg-6">
 					<div className="row">
 						{this.state.searchArtistsLeft.map((myArtist, index) => {
-							{
-								return this.FMGetArtist(myArtist, index);
-							}
+							return this.FMGetArtist(myArtist, index);
 						})}
 					</div>
 				</div>
@@ -185,9 +183,7 @@ class FMCompareArtist extends Component {
 					<div className="row">
 						{this.state.searchArtistsRight.map(
 							(myArtist, index) => {
-								{
-									return this.FMGetArtist(myArtist, index);
-								}
+								return this.FMGetArtist(myArtist, index);
 							}
 						)}
 					</div>

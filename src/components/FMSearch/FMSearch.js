@@ -182,9 +182,7 @@ class FMSearch extends Component {
 					<div className="row">
 						{/* Show results for search or initial state */}
 						{this.state.artist.map((myArtist, index) => {
-							{
-								return this.FMGetArtist(myArtist, index);
-							}
+							return this.FMGetArtist(myArtist, index);
 						})}
 					</div>
 				</div>
