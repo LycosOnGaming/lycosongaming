@@ -111,9 +111,9 @@ class AddBooking extends Component {
 									<option value="2">Benjamin</option>
 								</select>
 							</div>
-							{this.state.customerid === 10 ||
-							this.state.customerid === 11 ||
-							this.state.customerid === 12 ? (
+							{this.state.customerid == 10 ||
+							this.state.customerid == 11 ||
+							this.state.customerid == 12 ? (
 								<div className="col-12">
 									<div className="row">
 										<div className="col-3">
