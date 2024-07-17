@@ -5,6 +5,7 @@ import config from './config.json';
 
 import './FMSearch.scss';
 
+// load APi key
 const API_Key = config.API_Key;
 
 class FMSearch extends Component {
@@ -54,7 +55,7 @@ class FMSearch extends Component {
 					}}
 				>
 					<div className="row myCard border rounded my-3 mx-1 py-4">
-						<div className="col-12 col-lg-6">
+						<div className="col-12 col-lg-5">
 							{/* get the large image  */}
 							{myArtist.image.map((myImage, count) => {
 								if (myImage['size'] === 'large') {
@@ -75,13 +76,21 @@ class FMSearch extends Component {
 								}
 							})}
 						</div>
-						<div key={index} className="col-12 col-lg-6">
+						<div key={index} className="col-12 col-lg-7">
 							<p>{myArtist.name}</p>
-							{/* Not delivered from the API in the search so to show it only if we have a playcount*/}
+							{/* Not delivered from the API in the search so to show it only if we have a playcount or listeners*/}
 							{myArtist.playcount > 0 ? (
-								<p className="text-white mb-0">
+								<p className="text-white mb-1">
 									Wurde <i>{myArtist.playcount}</i> mal
-									abgespielt
+									abgespielt.
+								</p>
+							) : (
+								''
+							)}
+							{myArtist.listeners > 0 ? (
+								<p className="text-white mb-0">
+									Hat insgesamt <i>{myArtist.listeners}</i>{' '}
+									Zuhörer
 								</p>
 							) : (
 								''

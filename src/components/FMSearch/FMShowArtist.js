@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import config from './config.json';
 
+// load APi key
 const API_Key = config.API_Key;
 
 class FMShowArtist extends Component {
