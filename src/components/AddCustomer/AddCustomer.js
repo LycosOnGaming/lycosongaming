@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './AddCustomer.scss';
+import { number } from 'yup';
 
 class AddCustomer extends Component {
 	constructor(props) {
@@ -11,6 +12,7 @@ class AddCustomer extends Component {
 		this.state = {
 			customer: [],
 			worktime: [],
+			amount: 0,
 			showTable: false,
 		};
 	}
@@ -37,8 +39,14 @@ class AddCustomer extends Component {
 			.get('https://www.lycosongaming.de/api/drkcustomer/worktime.php')
 			.then(({ data }) => {
 				if (data !== null) {
+					let amount = 0;
+					data.forEach((element) => {
+						amount += Number(element.drkemployee_Amount);
+					});
+
 					this.setState({
 						worktime: data,
+						amount: Math.round(amount * 100) / 100,
 						showTable: true,
 					});
 				} else {
@@ -110,6 +118,7 @@ class AddCustomer extends Component {
 							);
 						})}
 					</div>
+					<div>Summe: {this.state.amount} €</div>
 					<div className="row">
 						<div className="col-12 worktime">
 							<div className="row my-3 text-center">

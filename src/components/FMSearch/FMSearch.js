@@ -141,7 +141,7 @@ class FMSearch extends Component {
 					artist: results,
 				});
 				// results.forEach((element) => {
-				//  // Für für Deutsch
+				//  // Sorry Für Deutsch
 				// 	// Ein Versuch um die Platzhalterbilder mit dem ersten Album Logo
 				// 	// zu ersetzen und mehr informationen in der Kachel auszugeben.
 				// 	// Leider nicht hinbekommen bitte Feedback wie man das machen könnte.

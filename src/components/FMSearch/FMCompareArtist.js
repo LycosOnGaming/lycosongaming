@@ -58,7 +58,7 @@ class FMCompareArtist extends Component {
 							searchArtistsRight: results,
 						});
 					} else {
-						throw new error('Not Supported');
+						throw new error('Not Supported'); // Javascript Error reicht aus. Overhead!!!
 					}
 				})
 				.catch((err) => {
